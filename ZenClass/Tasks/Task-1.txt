@@ -1,0 +1,302 @@
+		Looping Statements
+
+Task 2: 20-10-23
+Rajasekar T
+
+1. Program to Print numbers from 10 to 50 using loops
+
+Input:
+10
+50
+
+Output:
+
+10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 
+
+Execution Time:
+
+0.108s
+
+Memory Used:
+
+12672kb
+
+
+Code:
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner obj = new Scanner(System.in);
+        // Read the starting number and ending number of the list
+        int start = obj.nextInt();
+        int end = obj.nextInt();
+        
+        // Print the numbers of the list in a sequence
+        for(int i=start; i<=end;i++)
+            System.out.print(i+" ");
+    }
+}
+---------------------------------------------------------------------------------------------
+
+2. Program to check if a number is positive or negative
+
+Input:
+-5
+
+Output:
+
+The Number: -5 is negative
+
+Execution Time:
+
+0.109s
+
+Memory Used:
+
+12580kb
+
+
+Code:
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        
+        // Program to check if the entered number is positive or negative
+        Scanner obj = new Scanner(System.in);
+        int number = obj.nextInt();
+        
+        // If number is less than 0, then it is negative
+        if(number<0)
+        System.out.println("The Number: " + number+" is negative");
+        
+        else
+        System.out.println("The Number: " + number+" is positive");
+        
+    }
+}
+
+
+---------------------------------------------------------------------------------------------
+
+3. Reverse the given Number:
+
+Input:
+876
+
+Output:
+
+Number before Reversal: 876
+Number after Reversal: 678
+
+Execution Time:
+
+0.118s
+
+Memory Used:
+
+14440kb
+
+
+Code:
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        // Reverse a Given number using loops
+        Scanner obj = new Scanner(System.in);
+        int input = obj.nextInt();
+        int original = input;
+        // Result variable is used to store the reversed number
+        String result="";
+        // Extract each digit from the entered number
+        while(input>0){
+            int temp = input%10;
+            // Each extracted digit is concatenated in reverse order
+            result+=temp;
+            // Eliminating each digit from the number in the order from Right -> Left
+            input=input/10;
+        }
+        System.out.println("Number before Reversal: "+original);
+        System.out.println("Number after Reversal: "+result);
+    }
+}
+
+
+---------------------------------------------------------------------------------------------
+
+4. Print Smallest among 3 Numbers
+
+Input:
+3
+10
+20
+30
+
+Output:
+
+The Entered list of Numbers: 
+10 20 30 
+The Smallest number in the entered list is: 10
+
+Execution Time:
+
+0.111s
+
+Memory Used:
+
+12788kb
+
+
+Code:
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        
+        // Print smallest among 3 numbers
+        Scanner obj = new Scanner(System.in);
+        // Reads number of elements 
+        int no_of_elements = obj.nextInt();
+        int[] list = new int[no_of_elements];
+        // Use smallest variable inorder to compare and find the smallest element in the list
+        int smallest = Integer.MAX_VALUE;
+        
+        System.out.println("The Entered list of Numbers: ");
+        // Read the Input and store in an array
+        // Also Print it simultaneously
+        for(int i=0;i<no_of_elements;i++){
+            list[i] = obj.nextInt();
+            
+            System.out.print(list[i]+" ");
+            // Check for smallest element in the array and update the variable accordingly
+            if(smallest>list[i])
+                smallest = list[i];
+        }   
+        System.out.println("\nThe Smallest number in the entered list is: " + smallest);
+    }
+}
+
+
+---------------------------------------------------------------------------------------------
+
+5. Print the Discounted Price
+Discount conditions: 
+        If the purchase values are
+        less than 500 : No Discount
+        purchase_amount is in between 500 & 1000 : 10 % Discount
+        purchase_amount is greater than 1000 : 20 % Discount
+
+
+Input:
+600
+
+Output:
+
+The Purchase Amount before discount: 600.0
+The Total Amount after discount: 540.0
+
+Execution Time:
+
+0.12s
+
+Memory Used:
+
+14056kb
+
+
+Code:
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        
+        // Print the amount after discount
+        Scanner obj = new Scanner(System.in);
+        double purchase_amount = obj.nextDouble();
+        
+        double total = 0.0;
+        double discount_1 = 10.0/100.0;
+        double discount_2 = 20.0/100.0;
+        
+        // Discount conditions
+        // If the purchase values are
+        // less than 500 : No Discount
+        // purchase_amount is in between 500 & 1000 : 10 % Discount
+        // purchase_amount is greater than 1000 : 20 % Discount
+        
+        if(purchase_amount < 500)
+            total = purchase_amount;
+            
+        else if(purchase_amount >= 500 && purchase_amount <= 1000)
+        
+            // 1 - Discount %  = Returns the discounted price
+            total = purchase_amount * (1 - discount_1);
+            
+        else if(purchase_amount > 1000)
+            total = purchase_amount * (1 - discount_2);
+            
+        
+        System.out.println("The Purchase Amount before discount: "+ purchase_amount);
+        System.out.println("The Total Amount after discount: "+ total);
+    }
+}
+---------------------------------------------------------------------------------------------
+
+6. Print the following Pattern
+
+Input:
+5
+
+Output:
+
+5 5 5 5 5 
+5 4 4 4 4 
+5 4 3 3 3 
+5 4 3 2 2 
+5 4 3 2 1 
+
+Execution Time:
+
+0.104s
+
+Memory Used:
+
+12620kb
+
+
+
+Code:
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner obj = new Scanner(System.in);
+        
+        // Start number
+        int n = obj.nextInt();
+        
+        // Outer loop: 5 to 1
+        for(int i=n; i>0;i--){
+            
+            // Inner loop: 5 to 1
+            for(int j=n; j>0;j--){
+                
+                // Condition required to Print the required Pattern
+                
+                if(j<=i)
+                System.out.print(i+" ");
+                
+                else
+                System.out.print(j+" ");
+            }
+            System.out.println("");
+        }
+    }
+}
+
+			
+---------------------------------------------------------------------------------------------
+
+			End
