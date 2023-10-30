@@ -10,7 +10,6 @@ class Book {
     private String isAvailable;
 
     // Parameterised Constructor
-    // Used to Initialise the fields
     Book(int bookID, String title, String author, String isAvailable) {
         this.bookID = bookID;
         this.title = title;
@@ -18,7 +17,7 @@ class Book {
         this.isAvailable = isAvailable;
     }
 
-    // Getter Methods for Book attributes
+    // Getter & Setter Methods
     public int getBookID() {
         return bookID;
     }
@@ -35,7 +34,6 @@ class Book {
         return isAvailable;
     }
 
-    // Setter Methods for book attributes
     public void setBookID(int bookID) {
         this.bookID = bookID;
     }
@@ -51,17 +49,14 @@ class Book {
     public void setIsAvailable(String isAvailable) {
         this.isAvailable = isAvailable;
     }
-
 }
 
-// Class Library
 class Library {
     private Book[] books;
-    // count - maintains number of different books
-    // available in Library
+
+    // count - maintains number of different books in Library
     private int count = 0;
 
-    // Library constructor
     // Create an array of Books
     public Library(int no_of_books) {
         this.books = new Book[no_of_books];
@@ -103,6 +98,7 @@ class Library {
 
     // Replace method - Optional Not mentioned in Question
     public void replace(int search_index, String new_Title, String new_Author) {
+        
         // Replace the book name & author of the given book
         // from the books
         books[search_index].setTitle(new_Title);
@@ -160,21 +156,24 @@ public class BookManagementSystem {
 
         }
 
+        
         // b. Search Book operation
         System.out.println("Enter Book Id to Search: ");
         int search_bookId = Integer.parseInt(sc.nextLine());
         int search_index = library.searchBook(search_bookId);
+
 
         // c. Remove Book Operation only if the
         // searched book is available
         if (search_index >= 0) {
             System.out.println("Book with BookID " + search_bookId + " Found");
             library.removeBook(search_index);
-        } else {
+        } 
+        
+        else {
             System.out.println("\nBook with BookID " + search_bookId + " Not found");
             System.out.println("\n--->  So Cannot be Removed. ");
         }
-
 
         // d. Display All Books
         library.displayAllBooks();

@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// Complete Abstraction - Concept Used
 interface Taxable {
     double salesTax = 7;
     double incomeTax = 10.5;
@@ -46,6 +47,7 @@ class Employee implements Taxable {
     @Override
     public double calcTax() {
         double salary = this.getSalary();
+
         // Salary after Tax deductions
         double salary_after_tax = salary - (salary * (Taxable.incomeTax / 100));
         return salary_after_tax;
@@ -102,8 +104,8 @@ class Product implements Taxable {
     }
 }
 
-// Driver code - As mentioned in the Task
-public class XYZ {
+// Driver code 
+public class Taxation {
     public static void main(String[] args) {
         System.out.println("Taxable Interface Problem");
         Scanner sc = new Scanner(System.in);
@@ -123,8 +125,10 @@ public class XYZ {
         System.out.println("Salary after Tax - " + Taxable.incomeTax + "%: " + emp1.calcTax());
 
         System.out.println("-----------------------------------");
+        
         /***************************************************** */
 
+        
         System.out.println("\nEnter Product Id: ");
         int pid = Integer.parseInt(sc.nextLine());
 
