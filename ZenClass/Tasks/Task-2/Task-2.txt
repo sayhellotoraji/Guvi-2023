@@ -1,6 +1,6 @@
 			OOPS
 
-Task 2: 29-10-23
+Task 2: 30-10-23
 Name: Rajasekar T
 Batch:  JFS_WD2
 
@@ -20,11 +20,10 @@ import java.util.Random;
 import java.util.Set;
 import java.util.HashSet;
 
-// Class 1: Person
 class Person {
-    // Encapsulation
-    // Only Getter and Setter methods can access
-    // private instance fields
+    // Encapsulation - Concept Used
+    // Private fields are accessed via Getters & Setters
+
     private String name;
     // Default Age = 18
     private int age = 18;
@@ -56,10 +55,10 @@ class Person {
         System.out.println("Person Name: " + p.getName());
         System.out.println("Person Age : " + p.getAge());
     }
-
 }
 
-// Class 2: Product
+/************************************************************* */
+
 class Product {
     private int pid;
     private double price;
@@ -71,8 +70,7 @@ class Product {
         this.quantity = quantity;
     }
 
-    // ************************************************** */
-    // Getter Methods
+    // Getter & Setter Methods
     public int getPid() {
         return pid;
     }
@@ -85,8 +83,6 @@ class Product {
         return quantity;
     }
 
-    // ************************************************** */
-    // Setter Methods
     public void setPid(int pid) {
         this.pid = pid;
     }
@@ -99,9 +95,8 @@ class Product {
         this.quantity = quantity;
     }
 
-    // ************************************************** */
-
-    public static int highestPricedProductPID(Product[] prod) {
+    // Method to find highest Priced Product' s PID
+    public static int highestPricedProductPid(Product[] prod) {
         int highest_price = 0;
         int no_of_products = prod.length;
         Product highestPricedProduct = null;
@@ -112,21 +107,19 @@ class Product {
         return (highestPricedProduct != null) ? (highestPricedProduct.pid) : 0;
     }
 
-    // ************************************************** */
-
+    // Total amount Spent on products
     public static void totalAmount(Product[] prod) {
         Double total = 0.0;
         for (int i = 0; i < prod.length; i++) {
             total += prod[i].price * prod[i].quantity;
         }
-
-        // Total Spent On All Products
         System.out.println("c. Total Amount Spent: " + total);
     }
 
 }
 
-// Class 3: Account
+/************************************************************* */
+
 class Account {
     private int account_no;
     private double balance;
@@ -141,9 +134,8 @@ class Account {
         this.balance = 0.0;
     }
 
-    // Since Account Number is Computer Generated 
+    // Since Account Number is Computer Generated
     // Getters and Setters are Not Needed for account_no
-
     public double getBalance() {
         return balance;
     }
@@ -162,11 +154,9 @@ class Account {
         double balance = this.getBalance();
         if (balance > 0 && balance >= amount) {
             this.setBalance(balance - amount);
-        }
-        else {
+        } else {
             System.out.println("Insufficient Balance: ");
         }
-
         displayBalance();
     }
 
@@ -175,30 +165,26 @@ class Account {
     }
 }
 
-// Class 4: Employee
-// Inheritance
-// Employee class inherits from Person class
-// Using super() the name & age variables are
-// Passed to the Parent class from the child class
+/************************************************************* */
+
+// Inheritance - Concept Used.
 class Employee extends Person {
     private int employeeID;
     private double salary;
 
-    // When a Person is already existing 
-    // Only Employee credentials are updated
-    Employee(Person person, int employeeID, double salary){
+    // Only Employee credentials are updated for an existing Person
+    Employee(Person person, int employeeID, double salary) {
         super(person.getName(), person.getAge());
         this.employeeID = employeeID;
         this.salary = salary;
     }
-    // Used when a New Employee object is created before the Person object
+
+    // New Employee object is created before the Person object
     Employee(String name, int age, int employeeID, double salary) {
         super(name, age);
         this.employeeID = employeeID;
         this.salary = salary;
     }
-
-    // ************************************************** */
 
     // Getter Methods
     @Override
@@ -218,8 +204,6 @@ class Employee extends Person {
     public double getSalary() {
         return salary;
     }
-
-    // ************************************************** */
 
     // Setter Methods
     @Override
@@ -249,11 +233,9 @@ class Employee extends Person {
 }
 
 // Driver Code
-// Class named as mentioned in the task.
-public class XYZ {
+// Returns information about Person, Employee, Account, Product
+public class Information{
     public static void main(String[] args) {
-
-        /**************************************************************** */
 
         // 1.1 Display Person Details
         System.out.println("1.1 Read Person Details");
@@ -286,6 +268,7 @@ public class XYZ {
 
         // Enter Product infomation
         for (int i = 0; i < no_of_products; i++) {
+
             System.out.println("\n Enter Product: " + (i + 1) + " Details");
             System.out.println("Enter PID ->");
             int pid = Integer.parseInt(sc.nextLine());
@@ -296,16 +279,14 @@ public class XYZ {
             System.out.println("Enter Quantity ->");
             int quantity = Integer.parseInt(sc.nextLine());
 
-            // Create Product instance using Constuctor
-            // And Store in the Product Array
+            // Create Product instance
             prod[i] = new Product(pid, price, quantity);
-
         }
 
         System.out.println("");
 
-        // b) Find the highest Priced product's PID
-        int highest_priced_pid = Product.highestPricedProductPID(prod);
+        // b) Find the highest Priced product's pid
+        int highest_priced_pid = Product.highestPricedProductPid(prod);
         System.out.println("b. Highest Priced Product' s PID: " + highest_priced_pid);
 
         // c) Calculate total Amount Spent on all Products
@@ -330,6 +311,7 @@ public class XYZ {
             account_no = rand.nextInt(1000000000);
 
         }
+
         // Store the Account Number in the Set - Account Database
         account_no_database.add(account_no);
         Account acc1 = new Account(account_no, 0.0);
@@ -355,9 +337,10 @@ public class XYZ {
         /**************************************************************** */
 
         // 1.4 Employee Person Details
+
         // Add EmployeeID & Salary to the existing Person Object
         System.out.println("\n1.4 Read Employee Details");
-        System.out.println("For Person: "+ person_1.getName());
+        System.out.println("For Person: " + person_1.getName());
 
         // For Person 1 add Employee ID & Salary;
         System.out.println("\nEnter Employee ID: ");
@@ -365,8 +348,8 @@ public class XYZ {
 
         System.out.println("Enter Employee Salary: ");
         double salary = Double.parseDouble(sc.nextLine());
-        
-        // Employee Object Creation 
+
+        // Employee Object Creation
         Employee employee1 = new Employee(person_1, employeeID, salary);
 
         System.out.println("\n Display Employee Details");
@@ -376,6 +359,7 @@ public class XYZ {
         sc.close();
     }
 }
+
 
 
 
