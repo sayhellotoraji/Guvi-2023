@@ -251,7 +251,7 @@ Book Availability: Yes
 Qn 2. Taxable Interface Problem
 	Employee Class - Find Income Tax
 	Product Class - Product Price after Tax
-	XYZ class(As given in the question) - Driver Code
+	Taxation class - Driver Code
 
 
 Code:
