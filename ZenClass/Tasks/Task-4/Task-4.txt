@@ -1,0 +1,785 @@
+			Collections & Exceptions
+
+Task 4: 2-11-23
+Name: Rajasekar T
+Batch:  JFS_WD2
+
+
+Qn 1. Student Management System that handles Exceptions -
+	* AgeNotWithinRangeException
+	* NameNotValidException
+
+
+Code:
+// a) Student.java
+
+
+package StudentManagementSystem;
+
+class Student {
+    private int roll_no;
+    private String name;
+    private int age;
+    private String course;
+
+    // Parmeterised Constructor
+    // Method 1: Declare the Exceptions
+    Student(int roll_no, String name, int age, String course)
+            throws AgeNotWithinRangeException, NameNotValidException {
+        this.roll_no = roll_no;
+        this.course = course;
+
+
+        // Age Condtion
+        if (age < 15 || age > 21)
+            throw new AgeNotWithinRangeException("\nException: Age is not within 15-21");
+        else
+            this.age = age;
+
+
+        // Name Condition
+        char[] name_alphabets = name.toCharArray();
+        for (char ch : name_alphabets) {
+            if (!Character.isLetter(ch))
+                throw new NameNotValidException("\nException: Name contains Invalid Characters");
+
+            else
+                this.name = name;
+        }
+
+    }
+
+    // Getters and Setters
+    public int getRoll_no() {
+        return roll_no;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setRoll_no(int roll_no) {
+        this.roll_no = roll_no;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "| Roll No: "+getRoll_no() + ", Name: " + getName() + ", Age: " + getAge() + ", Course: " + getCourse()+" | ";
+    }
+}
+
+
+
+//--------------------------------------------------
+//b) AgeNotWithinRangeException.java
+
+
+
+package StudentManagementSystem;
+
+// User Defined Exception for Age Validation
+// Age not within 15 - 21
+class AgeNotWithinRangeException extends Exception {
+
+    AgeNotWithinRangeException(String message) {
+        super(message);
+    }
+}
+
+
+
+//--------------------------------------------------
+// c) NameNotValidException.java
+
+
+package StudentManagementSystem;
+
+// User Defined Exception for Name Validation
+// Name Should not contain numbers / Special symbols
+class NameNotValidException extends Exception {
+
+    NameNotValidException(String message) {
+        super(message);
+    }
+}
+
+
+
+
+//------------------------------------------------------------------
+// Driver Code
+// d) StudentManagementSystem.java 
+
+
+package StudentManagementSystem;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+
+// Exception Handling 2 Ways:
+// 1. Handle the Exception using try catch block
+// 2. Declare the Excetion in the method signature using throws
+
+// Driver Code
+public class StudentManagementSystem {
+
+    public static void main(String[] args) {
+        
+        // Read number of Students
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of students: ");
+        int no_of_Students = Integer.parseInt(sc.nextLine());
+
+        Student student;
+        
+        // Each Student should contain unique roll numbers
+        // Because there is possibility that name, age & course 
+        // might be same for 2 people
+        Set<Integer> unique_roll_no = new HashSet<>();
+
+        // Array list to store Student Information
+        List<Student> student_info = new ArrayList<>();
+
+        for (int i = 0; i < no_of_Students; i++) {
+            System.out.println("\nStudent " + (i + 1) + " Information");
+
+            // Condition to check unique Roll Numbers
+            System.out.println("Enter Roll No: ");
+            int roll_no = Integer.parseInt(sc.nextLine());
+
+            while (unique_roll_no.contains(roll_no)) {
+                System.out.println("Please Enter Unique Roll No:");
+                roll_no = Integer.parseInt(sc.nextLine());
+            }
+            unique_roll_no.add(roll_no);
+
+            System.out.println("Enter Name: ");
+            String name = sc.nextLine();
+
+            System.out.println("Enter Age: ");
+            int age = Integer.parseInt(sc.nextLine());
+
+            System.out.println("Enter Course: ");
+            String course = sc.nextLine();
+
+            // Method 2: Handle the Exceptions using try - catch
+            try {
+                // Create Student object & Add to Arraylist
+                student = new Student(roll_no, name, age, course);
+                student_info.add(student);
+            }
+
+            // If any 1 of the 2 Exception arises 
+            // Student is not added in Student info list
+            catch (AgeNotWithinRangeException | NameNotValidException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        System.out.println("\nStudents Information");
+        if (student_info.isEmpty())
+            System.out.println("Students List is Empty:");
+        else
+            System.out.println(student_info);
+
+        sc.close();
+
+    }
+}
+
+
+
+
+
+
+
+
+------>  Input & Output:
+
+Enter number of students: 
+4
+
+Student 1 Information
+Enter Roll No:
+1
+Enter Name: 
+Suresh
+Enter Age: 
+23
+Enter Course: 
+Mechanical
+
+Exception: Age is not within 15-21
+
+Student 2 Information
+Enter Roll No:
+2
+Enter Name: 
+Venk@
+Enter Age: 
+20
+Enter Course: 
+ECE
+
+Exception: Name contains Invalid Characters
+
+Student 3 Information
+Enter Roll No:
+3 
+Enter Name: 
+Rajasekar
+Enter Age: 
+20
+Enter Course: 
+CSE
+
+Student 4 Information
+Enter Roll No:
+3
+Please Enter Unique Roll No:
+4
+Enter Name: 
+Mohan
+Enter Age:
+19
+Enter Course:
+IT
+
+Students Information
+[| Roll No: 3, Name: Rajasekar, Age: 20, Course: CSE | , | Roll No: 4, Name: Mohan, Age: 19, Course: IT | ] 
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+Qn 2. Voter Class which throws an exception if age is below 18
+
+
+
+Code:
+
+// a) Voter.java
+
+
+package ElectionCommission;
+
+class Voter {
+    private String voterID;
+    private String name;
+    private int age;
+
+    // Parameterised Constructor
+    // 1. Declare Exception method
+    Voter(String voterID, String name, int age) throws AgeNotAboveException {
+        this.voterID = voterID;
+        this.name = name;
+
+        if (age < 18)
+            throw new AgeNotAboveException("\nInvalid Age for Voter: Below 18.");
+        else
+            this.age = age;
+    }
+
+    // No use of Setters
+
+    // Getters
+    public String getVoterID() {
+        return voterID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public String toString() {
+        return getVoterID() + " " + getName() + " " + getAge();
+
+    }
+}
+
+
+//----------------------------------------------------------------------------
+// b) AgeNotAboveException.java
+
+
+package ElectionCommission;
+
+// User Defined Exception for Age Eligibility
+// Person age should be >=18
+class AgeNotAboveException extends Exception {
+
+    AgeNotAboveException(String message) {
+        super(message);
+    }
+}
+
+
+
+//-------------------------------------------------------------------------------
+c) ElectionCommission.java
+
+package ElectionCommission;
+
+import java.util.Scanner;
+
+// Driver Code
+public class ElectionCommission {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter Voter id");
+        String voterID = sc.nextLine();
+
+        System.out.println("Enter Name");
+        String name = sc.nextLine();
+
+        System.out.println("Enter Age");
+        int age = Integer.parseInt(sc.nextLine());
+
+        Voter voter = null;
+
+        // 2. Handle exception with try - catch block
+        try {
+            voter = new Voter(voterID, name, age);
+        } catch (AgeNotAboveException e) {
+            System.out.println(e.getMessage());
+        }
+
+        if (voter != null) {
+            System.out.println("\nEligible Voter details: ");
+            System.out.println(voter);
+        }
+    }
+}
+
+
+
+Input & Output:
+
+Enter Voter id
+XNO1296
+Enter Name
+Rajasekar T
+Enter Age
+17
+
+Invalid Age for Voter: Below 18.
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+Qn 3. Weekday position returning Array Index Out of Bound exception when user enters above value 0 - 6
+
+
+Code:
+
+// Weekdays.java
+
+import java.util.Scanner;
+
+// Driver Code
+public class Weekdays {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Array Stores weekday names
+        String weekday[] = { "Sunday", "Monday",
+                "Tuesday", "Wednesday", "Thursday",
+                "Friday", "Saturday" };
+
+        int day_position;
+        System.out.println("Enter day position: ");
+
+        // While loop - Displays an exception if the value
+        // entered is incorrect And again Reads the input
+        // Without unexpected termination
+
+        while (true) {
+            try {
+                day_position = Integer.parseInt(sc.nextLine());
+                System.out.println("Day: " + weekday[day_position]);
+                break;
+            }
+
+            catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Entered number is out of Range.");
+                System.out.println("So, Enter correct position from 0-6:");
+            }
+        }
+    }
+}
+
+
+
+
+
+Input & Output:
+
+Enter day position:
+9
+Entered number is out of Range.
+So, Enter correct position from 0-6:
+6
+Day: Saturday
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+Qn 4. HashMap contains student names as key & Grades as value pairs
+
+Functionalities:
+* Add a student
+* Remove a student
+* Display Grades based on student name
+
+
+Code:
+
+// StudentGrades.java
+
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+// Driver Code
+public class StudentGrades {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Hashmap stores key - value pairs
+        // key = student name
+        // value = grades
+        Map<String, Integer> students = new HashMap<>();
+
+        System.out.println("Add number of Students:");
+        int no_of_students = Integer.parseInt(sc.nextLine());
+
+        System.out.println("Enter Student name and Grades:");
+        String student_name;
+        int grades;
+
+        int counter = 1;
+        while (counter <= no_of_students) {
+            System.out.println("Enter Name: " + counter);
+            student_name = sc.nextLine();
+
+            System.out.println("Enter Grades 5-10:");
+            grades = Integer.parseInt(sc.nextLine());
+
+            // a. Add new Student to hashmap
+            students.put(student_name, grades);
+
+            counter++;
+        }
+
+        // ************************************************************ */
+
+        // b.Remove an existing Student
+        System.out.println("\nEnter name of Student to be removed:");
+        String remove_student_name = sc.nextLine();
+
+        // Student list can be empty so check for exception
+        try {
+            Integer flag = students.remove(remove_student_name);
+            if (flag != null) {
+                System.out.println("\nRemoved Successfully.");
+                System.out.println("\nStudents list After Removal:");
+
+                for (Map.Entry<String, Integer> student : students.entrySet()) {
+                    System.out.println("Name: " + student.getKey() + ", Grade: " + student.getValue());
+                }
+
+            } else
+                System.out.println("Entered Name is not Available");
+        }
+
+        catch (NullPointerException e) {
+            System.out.println("Students list is Empty");
+        }
+
+        // ************************************************************ */
+
+        // c. Search a student by name and display grade
+        System.out.println("\nFind Grade for Student:");
+        String search_student_name = sc.nextLine();
+
+        // Student list can be empty so check for exception
+        try {
+            Integer grade = students.get(search_student_name);
+            if (grade != null)
+                System.out.println("\nSearched Student with Grade: " + search_student_name + ", Grade: " + grade);
+            else
+                System.out.println("Entered Name is not Available");
+        }
+
+        catch (NullPointerException e) {
+            System.out.println("Students list is Empty");
+        }
+
+        sc.close();
+    }
+}
+
+
+
+
+Input & Output:
+
+
+Add number of Students:
+3
+Enter Student name and Grades:
+Enter Name: 1
+Rajasekar
+Enter Grades 5-10:
+9
+Enter Name: 2
+Suresh
+Enter Grades 5-10:
+8
+Enter Name: 3
+Venkat
+Enter Grades 5-10:
+7
+
+Enter name of Student to be removed:
+Suresh
+
+Removed Successfully.
+
+Students list After Removal:
+Name: Rajasekar, Grade: 9
+Name: Venkat, Grade: 7
+
+Find Grade for Student:
+Rajasekar
+
+Searched Student with Grade: Rajasekar, Grade: 9
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+Qn 5. Create a customized Stack Data Structure Performing below functions
+
+* Push operation
+* Pop elements
+* Check if stack is Empty
+
+
+Code:
+
+// a) Node.java
+
+package CustomStack;
+
+class Node {
+    private Integer data;
+    private Node belowNode = null;
+
+    public Node(Integer data) {
+        this.data = data;
+    }
+
+    // Getters & Setters
+    public Integer getData() {
+        return data;
+    }
+
+    public void setData(Integer data) {
+        this.data = data;
+    }
+
+    public Node getBelowNode() {
+        return belowNode;
+    }
+
+    public void setBelowNode(Node belowNode) {
+        this.belowNode = belowNode;
+    }
+}
+
+
+//--------------------------------------------------------------------
+
+// b) CustomStack.java
+
+package CustomStack;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// Driver Code
+class CustomStack {
+
+    // Count variable stores stack size
+    private static int count = 0;
+
+    // Top position in stack
+    private static Node topNode = null;
+
+    // Constructor
+    public CustomStack() {
+    }
+
+    public static int getCount() {
+        return CustomStack.count;
+    }
+
+    public static void setCount(int count) {
+        CustomStack.count = count;
+    }
+
+    // Peek Operation
+    // Only Returns the top element but does not remove it
+    public static Node getTopNode() {
+        return CustomStack.topNode;
+    }
+
+    public static void setTopNode(Node tempNode) {
+        CustomStack.topNode = tempNode;
+    }
+
+    // Push operation - Add element to top of stack
+    public static void push(Integer data) {
+        Node tempNode = new Node(data);
+        tempNode.setBelowNode(CustomStack.topNode);
+        CustomStack.setTopNode(tempNode);
+        CustomStack.setCount(count + 1);
+
+    }
+
+    // Pop Operation - Remove the top element from the stack
+    public static void pop() {
+        System.out.println("\nPopped Node: " + CustomStack.topNode.getData());
+        CustomStack.setTopNode(CustomStack.topNode.getBelowNode());
+        CustomStack.setCount(count - 1);
+    }
+
+    // Method to print elements in stack
+    public static void printStack() {
+        Node top = CustomStack.topNode;
+        if (top == null) {
+            System.out.println("No element in stack to print");
+            return;
+        }
+        while (top != null) {
+            System.out.println(top.getData());
+            top = top.getBelowNode();
+        }
+    }
+
+    // Check if Stack is Empty
+    public static boolean isEmpty() {
+        return CustomStack.count == 0;
+    }
+
+    public static int size() {
+        return CustomStack.count;
+    }
+
+    public static void main(String args[]) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of elements to be pushed into stack:");
+        int no_of_elements = Integer.parseInt(sc.nextLine());
+
+        // Adding element to top of the stack
+        for (int i = 1; i <= no_of_elements; i++) {
+            System.out.println("Enter element -> " + i);
+            int data = Integer.parseInt(sc.nextLine());
+
+            // 1. Push operation
+            CustomStack.push(data);
+        }
+
+        // 2. Print after adding all elements
+        System.out.println("\nElements in Stack After Push operation:");
+        CustomStack.printStack();
+
+        // 3. Pop top element from stack
+        CustomStack.pop();
+        System.out.println("Elements in Stack After Pop operation:");
+
+        // Print after poping an element from stack
+        printStack();
+
+        // 4. Check if Stack is Emtpy or not
+        System.out.println("\nIs Stack Empty: " + CustomStack.isEmpty());
+
+        // 5. Print size of the stack
+        System.out.println("\nSize of stack: " + CustomStack.size());
+
+        sc.close();
+    }
+}
+
+
+
+
+Input & Output:
+
+Enter number of elements to be pushed into stack:
+5
+Enter element -> 1
+10
+Enter element -> 2
+20
+Enter element -> 3
+30
+Enter element -> 4
+40
+Enter element -> 5
+50
+
+Elements in Stack After Push operation:
+50
+40
+30
+20
+10
+
+Popped Node: 50
+Elements in Stack After Pop operation:
+40
+30
+20
+10
+
+Is Stack Empty: false
+
+Size of stack: 4

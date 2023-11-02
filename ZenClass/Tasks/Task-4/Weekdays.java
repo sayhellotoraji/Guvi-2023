@@ -1,9 +1,10 @@
 import java.util.Scanner;
 
-// Weekdays
+// Driver Code
 public class Weekdays {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         // Array Stores weekday names
         String weekday[] = { "Sunday", "Monday",
                 "Tuesday", "Wednesday", "Thursday",
@@ -12,8 +13,10 @@ public class Weekdays {
         int day_position;
         System.out.println("Enter day position: ");
 
-        // While loop Inorder to read correct input from user
-        // Without termination
+        // While loop - Displays an exception if the value
+        // entered is incorrect And again Reads the input
+        // Without unexpected termination
+
         while (true) {
             try {
                 day_position = Integer.parseInt(sc.nextLine());
