@@ -15,13 +15,14 @@ public class Question_2 {
         // Read Array of strings
         String[] input_strings = new String[no_of_strings];
         for (int i = 0; i < no_of_strings; i++) {
+            System.out.print("String " + (i + 1) + ":");
             input_strings[i] = sc.nextLine();
         }
 
         // Convert input_strings array to List
         List<String> strings_List = Arrays.asList(input_strings);
-        System.out.println("\nInput");
         System.out.println("Question 2: Filter empty strings: ");
+        System.out.println("\nInput");
         System.out.print("Input List: ");
         System.out.println(strings_List);
 
@@ -35,7 +36,7 @@ public class Question_2 {
         int no_of_empty_strings = strings_List.size() - result_string.size();
         System.out.println("\nOutput");
         System.out.println("Number of empty strings before filtering: " + no_of_empty_strings);
-        System.out.print("Output Stream: ");
+        System.out.print("Output Stream without Empty strings: ");
 
         // Output list not containing empty strings
         System.out.println(result_string);

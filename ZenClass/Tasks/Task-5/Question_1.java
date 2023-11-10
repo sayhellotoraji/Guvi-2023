@@ -14,13 +14,15 @@ public class Question_1 {
         // Store names in an array
         String[] input_names = new String[no_of_names];
         for (int i = 0; i < no_of_names; i++) {
+            System.out.print("Name " + (i + 1) + ":");
             input_names[i] = sc.nextLine();
         }
 
         // Stream of String names
         Stream<String> names = Stream.of(input_names);
 
-        System.out.println("\nOuput: ");
+        System.out.println("\nQuestion 1: Map each name to UpperCase: ");
+        System.out.println("Ouput: ");
         System.out.println("\nConvert Stream of Strings to Uppercase:");
         System.out.print("Input Stream: ");
         System.out.println(Arrays.toString(input_names));

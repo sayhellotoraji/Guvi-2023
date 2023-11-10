@@ -1,0 +1,287 @@
+			Streams & Date API
+
+Task 5: 
+Name: Rajasekar T
+Batch:  JFS_WD2
+
+
+1. Write a program using map() - method, to convert a list of strings into uppercase.
+	If the given list is: Stream names = Stream.of("aBc", "de", "f");
+
+
+Code:
+
+import java.util.Arrays;
+import java.util.stream.Stream;
+import java.util.Scanner;
+
+public class Question_1 {
+    public static void main(String[] args) {
+
+        System.out.println("Enter number of names to pass to the Stream:");
+        Scanner sc = new Scanner(System.in);
+        int no_of_names = Integer.parseInt(sc.nextLine());
+        System.out.println("Enter names: ");
+
+        // Store names in an array
+        String[] input_names = new String[no_of_names];
+        for (int i = 0; i < no_of_names; i++) {
+            System.out.print("Name " + (i + 1) + ":");
+            input_names[i] = sc.nextLine();
+        }
+
+        // Stream of String names
+        Stream<String> names = Stream.of(input_names);
+
+        System.out.println("\nQuestion 1: Map each name to UpperCase: ");
+        System.out.println("Ouput: ");
+        System.out.println("\nConvert Stream of Strings to Uppercase:");
+        System.out.print("Input Stream: ");
+        System.out.println(Arrays.toString(input_names));
+        System.out.print("Output Stream: ");
+
+        // Map method converts each string to Uppercase
+        names.map(name -> name.toUpperCase())
+                .forEach(name -> System.out.print(name + ", "));
+
+        sc.close();
+
+    }
+}
+
+
+
+Input & Output:
+
+Enter number of names to pass to the Stream:
+3
+Enter names: 
+Name 1:aBc
+Name 2:d
+Name 3:ef
+
+Question 1: Map each name to UpperCase:
+Ouput:
+
+Convert Stream of Strings to Uppercase:
+Input Stream: [aBc, d, ef]
+Output Stream: ABC, D, EF,
+
+--------------------------------------------------
+
+
+2. Check whether the strings in the list are empty or not. Print the list having non empty strings.
+	If the given list is: Arrays.asList("abc", "", "bc", "efg", "abcd", "", "jkl"); 
+
+
+Code:
+
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class Question_2 {
+    public static void main(String[] args) {
+
+        System.out.println("Enter number of Strings to pass to the Stream:");
+        Scanner sc = new Scanner(System.in);
+        int no_of_strings = Integer.parseInt(sc.nextLine());
+        System.out.println("Enter Strings: ");
+
+        // Read Array of strings
+        String[] input_strings = new String[no_of_strings];
+        for (int i = 0; i < no_of_strings; i++) {
+            System.out.print("String " + (i + 1) + ":");
+            input_strings[i] = sc.nextLine();
+        }
+
+        // Convert input_strings array to List
+        List<String> strings_List = Arrays.asList(input_strings);
+        System.out.println("Question 2: Filter empty strings: ");
+        System.out.println("\nInput");
+        System.out.print("Input List: ");
+        System.out.println(strings_List);
+
+        // Filter method removes empty strings
+        // Stream of strings using stream method
+        List<String> result_string = strings_List.stream()
+                .filter(s -> !s.isEmpty())
+                .collect(Collectors.toList());
+
+        // Returns number of empty strings
+        int no_of_empty_strings = strings_List.size() - result_string.size();
+        System.out.println("\nOutput");
+        System.out.println("Number of empty strings before filtering: " + no_of_empty_strings);
+        System.out.print("Output Stream without Empty strings: ");
+
+        // Output list not containing empty strings
+        System.out.println(result_string);
+
+        sc.close();
+
+    }
+}
+
+
+
+Input & Output:
+
+Enter number of Strings to pass to the Stream:
+7
+Enter Strings: 
+String 1:abc
+String 2:
+String 3:bc
+String 4:efg
+String 5:abcd
+String 6:
+String 7:jkl
+Question 2: Filter empty strings: 
+
+Input
+Input List: [abc, , bc, efg, abcd, , jkl]
+
+Output
+Number of empty strings before filtering: 2
+Output Stream without Empty strings: [abc, bc, efg, abcd, jkl]
+
+
+--------------------------------------------------
+
+3. Filter students with names that start with "A", and give chocolates by the teacher. 
+	Using list Interface
+	Using Streams & Lambda Expressions
+
+
+Code:
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.util.stream.Collectors;
+
+public class Question_3 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter number of students in a class: ");
+        int no_of_students = Integer.parseInt(sc.nextLine());
+
+        // List to store student names
+        List<String> student_names = new ArrayList<>();
+        System.out.println("Enter names of Students in class");
+
+        for (int i = 0; i < no_of_students; i++) {
+            System.out.print("Name "+(i+1)+":");
+            student_names.add(sc.nextLine().toUpperCase());
+
+        }
+        System.out.println("\nInput List: Student names in class");
+        System.out.println(student_names);
+
+        // Use stream method to convert list of students to streams
+        // Use filter method to return students name that starts with 'A'
+        List<String> filtered_students = student_names.stream()
+                .filter(name -> name.startsWith("A")).collect(Collectors.toList());
+
+        System.out.println("\nOutput: ");
+        System.out.println("Students whose name starts with 'A' would get Chocolates from Teacher");
+        System.out.println("Count: " + filtered_students.size());
+        System.out.println(filtered_students);
+
+        // Use RemoveAll method in List interface to return
+        // Students who did not get chocolates
+        System.out.println("\nStudents who did not get chocolates");
+        student_names.removeAll(filtered_students);
+        System.out.println("Count: " + student_names.size());
+        System.out.println(student_names);
+
+        sc.close();
+    }
+}
+
+
+
+Input & Output:
+
+Enter number of students in a class: 
+10
+Enter names of Students in class
+Name 1:raja
+Name 2:melchi
+Name 3:ajay
+Name 4:john
+Name 5:lokesh
+Name 6:guru
+Name 7:aditya
+Name 8:gokul
+Name 9:arun
+Name 10:elango
+
+Input List: Student names in class
+[RAJA, MELCHI, AJAY, JOHN, LOKESH, GURU, ADITYA, GOKUL, ARUN, ELANGO]
+
+Output:
+Students whose name starts with 'A' would get Chocolates from Teacher
+Count: 3
+[AJAY, ADITYA, ARUN]
+
+Students who did not get chocolates
+Count: 7
+[RAJA, MELCHI, JOHN, LOKESH, GURU, GOKUL, ELANGO]
+
+--------------------------------------------------
+
+4. Using java.time.LocalDate class find the age of a person given his birth date in the format
+	
+Format ---->  Birthdate: yyyy-mm-dd
+
+
+Code:
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
+
+public class Question_4 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter birth date: ");
+        String date = sc.nextLine();
+
+        // Specifies the pattern of date to be read as input
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // Parses the string based on the pattern to get the date
+        LocalDate birthDate = LocalDate.parse(date, pattern);
+
+        // Returns Current Date
+        LocalDate currentDate = LocalDate.now();
+
+        // Period  - between method calculates the age from birth date to current date
+        Period age = Period.between(birthDate, currentDate);
+
+        System.out.println("\nOutput: ");
+        System.out.println("Your age is: "
+                + age.getYears() + " years, "
+                + age.getMonths() + " months, "
+                + age.getDays() + " days");
+
+        sc.close();
+
+    }
+}
+
+
+
+
+Input & Output:
+
+Enter birth date:
+1990-05-15
+
+Output:
+Your age is: 33 years, 5 months, 26 days
+
+--------------------------------------------------

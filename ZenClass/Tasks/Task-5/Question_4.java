@@ -17,11 +17,11 @@ public class Question_4 {
         // Returns Current Date
         LocalDate currentDate = LocalDate.now();
 
-        // Period calculates the age from birth date to current date
+        // Period  - between method calculates the age from birth date to current date
         Period age = Period.between(birthDate, currentDate);
 
-        System.out.println("Output: ");
-        System.out.println("\nYour age is: "
+        System.out.println("\nOutput: ");
+        System.out.println("Your age is: "
                 + age.getYears() + " years, "
                 + age.getMonths() + " months, "
                 + age.getDays() + " days");

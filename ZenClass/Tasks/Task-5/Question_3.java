@@ -13,8 +13,11 @@ public class Question_3 {
         List<String> student_names = new ArrayList<>();
         System.out.println("Enter names of Students in class");
 
-        for (int i = 0; i < no_of_students; i++)
+        for (int i = 0; i < no_of_students; i++) {
+            System.out.print("Name "+(i+1)+":");
             student_names.add(sc.nextLine().toUpperCase());
+
+        }
         System.out.println("\nInput List: Student names in class");
         System.out.println(student_names);
 
