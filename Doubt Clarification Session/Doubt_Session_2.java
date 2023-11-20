@@ -1,11 +1,15 @@
 import java.util.Scanner;
 
+
+// Date : 3-11-23
+// Doubt Clarification Session - 2
+// Functional Interface & Lambda Expressions
 interface Bank {
 
     double bank_operation(double amount, double balance);
 }
 
-class Main {
+public class Doubt_Session_2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
