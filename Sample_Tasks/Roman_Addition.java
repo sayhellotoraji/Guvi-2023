@@ -1,4 +1,4 @@
-package Practice_Problem_ZenClass;
+package Sample_Tasks;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
