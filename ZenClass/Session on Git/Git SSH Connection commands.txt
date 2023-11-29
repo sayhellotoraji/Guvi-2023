@@ -1,0 +1,14 @@
+﻿Git SSH Connection
+
+Commands:
+
+    • ls -a
+    • rm -rf .ssh
+    • mkdir ~/.ssh
+    • cd ~/.ssh
+    • ssh-keygen -o
+    • Enter – to set default
+    • cat id_rsa.pub 
+    • copy the key from file and paste in github to add ssh key
+    • git clone <git_ssh_url>
+    • Connection established
