@@ -1,0 +1,41 @@
+﻿Git P4Merge Configuration in Linux
+
+Command to download P4Merge and Install:
+
+
+    • curl https://cdist2.perforce.com/perforce/r19.1/bin.linux26x86_64/p4v.tgz -o p4v.tgz gunzip p4v.tgz
+    • ls
+    • tar xvf p4v.tar
+    • ls
+    • cd p4v-2023.3.2495381/
+    • ls -l
+    • sudo mkdir /opt/p4merge
+    • sudo mv * /opt/p4merge/
+    • ls
+    • cd ..
+    • ls
+    • rm p4v.tar
+    • rm -rf p4v-2023.3.2495381/
+    • ls
+    • sudo ln -s /opt/p4merge/bin/p4merge /usr/local/bin/p4merge
+    • p4merge
+
+
+Configuration:
+
+    • git config --global diff.tool p4merge
+    • git config --global difftool.p4merge.path /usr/local/bin/p4merge
+    • git config --global diff.prompt false
+    • git config --global merge.tool p4merge
+    • git config --global mergetool.p4merge.path /usr/local/bin/p4merge
+    • git config --global merge.prompt false
+    • git config --global –list
+
+user.email=*****
+user.name=*****
+diff.tool=p4merge
+diff.prompt=false
+difftool.p4merge.path=/usr/local/bin/p4merge
+merge.tool=p4merge
+merge.prompt=false
+mergetool.p4merge.path=/usr/local/bin/p4merge
