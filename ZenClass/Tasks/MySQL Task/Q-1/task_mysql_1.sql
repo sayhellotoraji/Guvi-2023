@@ -1,8 +1,11 @@
 
+-- Create database using the command 
 create schema Task_MySQL_1;
 
+-- Choose the database to work with
 use Task_MySQL_1;
 
+-- Create the Table Empl
 create table Empl(
 empno int, 
 ename varchar(30),
@@ -17,6 +20,7 @@ foreign key(mgr) REFERENCES Empl(empno)
 );
 
 
+-- Command to Add multiple records into the table
 insert into 
 Empl(empno, ename, job, mgr, hiredate, sal, comm, deptno) 
 values
@@ -32,17 +36,24 @@ values
 (10000, 'SMITH', 'CLERK', 2222, '1990-12-18', 800.00, null, 20);
 
 
+-- Shows the data stored in Empl table.
 select * from Empl;
 
+-- Qn.1 Query to display ename & salary of employees greater or equal to 2200.
 select ename, sal from Empl where sal>=2200;
 
-select ename from Empl where comm IS NULL or comm= 0;
+-- Qn.2 Query to display details of employees not getting commission.
+select * from Empl where comm IS NULL or comm= 0;
 
+-- Qn.3 Query to display ename & salary of employees who don' t have salary within range 2500 to 4000.
 select ename, sal from Empl where sal not between 2500 and 4000;
 
+-- Qn.4 Query to display name, job title & salary of employees who don' t have a manager.
 select ename, job, sal from Empl where mgr is null;
 
-select ename from Empl where ename like '__A%';
+-- Qn.5 Query to display name of employees whose name contains "A" as third alphabet.
+select ename from Empl where ename like '__A%' limit 1;
 
-select ename from Empl where ename like '%T';
+-- Qn.6 Query to display name of employees whose name contains "T" as the last alphabet
+select ename from Empl where ename like '%T'limit 1;
 
