@@ -9,6 +9,9 @@ public class IO_Counter {
     String file_1 = args[0];
 
     // IO_Counter_Input_File_1.txt
+    // FileReader reads the contents from file
+    // BufferedReader converts the content to Character Stream
+    // later converted to String for further processing
     FileReader reader = new FileReader(file_1);
     BufferedReader br = new BufferedReader(reader);
 
