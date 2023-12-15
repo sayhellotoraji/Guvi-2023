@@ -3,6 +3,25 @@
     <title>
         TechFest
     </title>
+
+    <script>
+
+        function validateEmail(){
+            var pattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
+            var email = document.getElementById("email").value;
+
+            if(email.match(pattern)){
+                console.log("valid");
+                document.getElementById("error").innerHTML = "";
+                document.getElementById("error").style.display = "none";
+            }
+            else{
+                console.log("invalid");
+                document.getElementById("error").innerHTML = "Invalid email";
+                document.getElementById("error").style.display = "block";
+            }
+        }
+    </script>
 </head>
 <body>
     <form action="greeting.html" method="post">
@@ -30,7 +49,8 @@
         <br>
         <br>
         Email:
-        <input type="email">
+        <input type="email" id="email" name="email" onkeyup="validateEmail()">
+        <span id="error" style="display: block;"></span>
 
         <input type="submit" value="Enroll">
     </form>
