@@ -1,0 +1,92 @@
+<html>
+  <head>
+    <title>Calculator</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <!-- Body containing the Html layout for Calculator -->
+  <body>
+    <table>
+      <tr>
+        <td id="display" colspan="4">0</td>
+      </tr>
+
+      <tr>
+        <td>
+          <button id="C" onclick="clearDisplay(event)">C</button>
+        </td>
+        <td>
+          <button id="backSpace" onclick="backSpace()">&larr;</button>
+        </td>
+        <td>
+          <button id="%" onclick="display(event)">%</button>
+        </td>
+        <td>
+          <button id="*" onclick="display(event)">X</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button id="7" onclick="display(event)">7</button>
+        </td>
+        <td>
+          <button id="8" onclick="display(event)">8</button>
+        </td>
+        <td>
+          <button id="9" onclick="display(event)">9</button>
+        </td>
+        <td>
+          <button id="/" onclick="display(event)">/</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button id="4" onclick="display(event)">4</button>
+        </td>
+        <td>
+          <button id="5" onclick="display(event)">5</button>
+        </td>
+        <td>
+          <button id="6" onclick="display(event)">6</button>
+        </td>
+        <td>
+          <button id="-" onclick="display(event)">-</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button id="1" onclick="display(event)">1</button>
+        </td>
+        <td>
+          <button id="2" onclick="display(event)">2</button>
+        </td>
+        <td>
+          <button id="3" onclick="display(event)">3</button>
+        </td>
+        <td>
+          <button id="+" onclick="display(event)">+</button>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <button id="0" onclick="display(event)">0</button>
+        </td>
+        <td>
+          <button id="." onclick="display(event)">.</button>
+        </td>
+        <td colspan="2">
+          <button id="equals" onclick="calculate()">=</button>
+        </td>
+      </tr>
+    </table>
+
+    <!-- External JS -->
+    <script src="script.js"></script>
+  </body>
+</html>
