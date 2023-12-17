@@ -1,0 +1,21 @@
+h1,
+p {
+    text-align: center;
+}
+
+table,
+td {
+    text-align: center;
+    border: 2px solid black;
+    border-collapse: collapse;
+    width: 30%;
+    height: 30%;
+    margin: auto;
+}
+
+.buttons {
+    width: 100%;
+    position:relative;
+    margin-left: 42%;
+    margin-top: 2%;
+}
