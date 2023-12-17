@@ -8,23 +8,32 @@
 
   <!-- Body containing the Html layout for Calculator -->
   <body>
+    <h1 id="title">Calculator Task</h1>
+    <p id="description">
+      <b>
+        The Calculator can perform basic addition, subtraction, multiplication,
+        division, modulous operations.<br />
+        Only Numbers are allowed, else an alert message will be displayed.<br/>
+        Ctrl+Shift+O - to open Test Suite or click the Menu on top left.
+      </b>
+    </p>
     <table>
       <tr>
-        <td id="display" colspan="4">0</td>
+        <input id ="result" hidden><td id="display" colspan="4">0</td>
       </tr>
 
       <tr>
         <td>
-          <button id="C" onclick="clearDisplay(event)">C</button>
+          <button id="clear" onclick="clearDisplay(event)">C</button>
         </td>
         <td>
           <button id="backSpace" onclick="backSpace()">&larr;</button>
         </td>
         <td>
-          <button id="%" onclick="display(event)">%</button>
+          <button id="modulous" onclick="display(event)">%</button>
         </td>
         <td>
-          <button id="*" onclick="display(event)">X</button>
+          <button id="multiply" onclick="display(event)">X</button>
         </td>
       </tr>
 
@@ -39,7 +48,7 @@
           <button id="9" onclick="display(event)">9</button>
         </td>
         <td>
-          <button id="/" onclick="display(event)">/</button>
+          <button id="divide" onclick="display(event)">/</button>
         </td>
       </tr>
 
@@ -54,7 +63,9 @@
           <button id="6" onclick="display(event)">6</button>
         </td>
         <td>
-          <button id="-" onclick="display(event)">-</button>
+          <button id="subtract" onclick="display(event)">-</button>
+          <!-- <button id="-" onclick="display(event)">-</button> -->
+
         </td>
       </tr>
 
@@ -69,7 +80,9 @@
           <button id="3" onclick="display(event)">3</button>
         </td>
         <td>
-          <button id="+" onclick="display(event)">+</button>
+          <button id="add" onclick="display(event)">+</button>
+          <!-- <button id="+" onclick="display(event)">+</button> -->
+
         </td>
       </tr>
 
@@ -81,12 +94,13 @@
           <button id="." onclick="display(event)">.</button>
         </td>
         <td colspan="2">
-          <button id="equals" onclick="calculate()">=</button>
+          <button id="equal" onclick="calculate()">=</button>
         </td>
       </tr>
     </table>
 
     <!-- External JS -->
     <script src="script.js"></script>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
   </body>
 </html>

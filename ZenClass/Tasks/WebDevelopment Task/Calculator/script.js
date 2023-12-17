@@ -2,8 +2,8 @@ let result = 0; // Arithmatic value for calculation
 let display_result = ""; // Output value displayed
 
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-
 document.getElementById("display").innerHTML = result;
+
 window.addEventListener("keydown", handleKeyDown);
 
 //*************************** Clear Display ***************************** */
@@ -45,10 +45,23 @@ function display(e) {
       display_result += e.key;
     } else {
       alert("Only Numbers are allowed.");
-      e.preventDefault();
+      exit(); // terminates the function
+      document.getElementById("display").innerHTML = display_result;
     }
   } else {
-    display_result += e.target.id;
+    if (e.target.id == "add") {
+      display_result += "+";
+    } else if (e.target.id == "subtract") {
+      display_result += "-";
+    } else if (e.target.id == "multiply") {
+      display_result += "*";
+    } else if (e.target.id == "divide") {
+      display_result += "/";
+    } else if (e.target.id == "modulous") {
+      display_result += "%";
+    } else {
+      display_result += e.target.id;
+    }
   }
   document.getElementById("display").innerHTML = display_result;
 }
@@ -60,7 +73,21 @@ function lastDisplayedElement() {
 }
 
 function currentlyEnteredElement(e) {
-  var current_entered_element = e.target.id;
+  var operator = "";
+  if (e.target.id == "add") {
+    operator = "+";
+  } else if (e.target.id == "subtract") {
+    operator = "-";
+  } else if (e.target.id == "multiply") {
+    operator = "*";
+  } else if (e.target.id == "divide") {
+    operator = "/";
+  } else if (e.target.id == "modulous") {
+    operator = "%";
+  }
+  var current_entered_element = operator;
+
+  // var current_entered_element = e.target.id;
   return isSymbol(current_entered_element);
 }
 
@@ -88,29 +115,24 @@ function calculate() {
   while (i < exp.length) {
     var num2 = exp[i];
     if (exp[i - 1] == "+") {
-      exp[0] = parseInt(exp[0]) + parseInt(exp[i]);
+      exp[0] = parseFloat(exp[0]) + parseFloat(exp[i]);
     } else if (exp[i - 1] == "-") {
-      exp[0] = parseInt(exp[0]) - parseInt(exp[i]);
+      exp[0] = parseFloat(exp[0]) - parseFloat(exp[i]);
     } else if (exp[i - 1] == "*") {
-      exp[0] = parseInt(exp[0]) * parseInt(exp[i]);
+      exp[0] = parseFloat(exp[0]) * parseFloat(exp[i]);
     } else if (exp[i - 1] == "/") {
-      exp[0] = parseInt(exp[0]) / parseInt(exp[i]);
+      exp[0] = parseFloat(exp[0]) / parseFloat(exp[i]);
     } else if (exp[i - 1] == "%") {
-      exp[0] = parseInt(exp[0]) % parseInt(exp[i]);
+      exp[0] = parseFloat(exp[0]) % parseFloat(exp[i]);
     }
 
     i = i + 2;
   }
   clearDisplay();
   display_result = exp[0];
+
   document.getElementById("display").innerHTML = display_result;
 }
-
-
-
-
-
-
 
 // New Learning - alternative to deprecated methods
 // var add = new Function("x", "y", "return x+y");

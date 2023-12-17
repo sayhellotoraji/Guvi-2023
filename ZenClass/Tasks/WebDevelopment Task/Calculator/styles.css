@@ -1,7 +1,7 @@
 table {
     background-color: #d9d9d9;
     margin: auto;
-    height: 80%;
+    height: 75%;
     width: 30%;
     border-spacing: 0.75em 1em;
     border: 2px solid #b9b9b9;
@@ -10,6 +10,10 @@ table {
   td {
     text-align: center;
     font-size: larger;
+  }
+  h1,p{
+    text-align: center;
+    border: 2px solid #0d6efd;
   }
   button {
     height: 100%;
@@ -23,9 +27,10 @@ table {
     background-color: #b9b9b9;
     font-size: xx-large;
   }
-  #equals {
+  #equal {
     background-color: #0d6efd;
     color: white;
     text-align: center;
     font-size: larger;
   }
+
