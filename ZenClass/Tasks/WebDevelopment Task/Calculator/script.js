@@ -2,7 +2,7 @@ let result = 0; // Arithmatic value for calculation
 let display_result = ""; // Output value displayed
 
 const numbers = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-document.getElementById("display").innerHTML = result;
+document.getElementById("result").value = result;
 
 window.addEventListener("keydown", handleKeyDown);
 
@@ -10,7 +10,7 @@ window.addEventListener("keydown", handleKeyDown);
 function clearDisplay() {
   result = 0;
   display_result = result;
-  document.getElementById("display").innerHTML = display_result;
+  document.getElementById("result").value = display_result;
 }
 
 //***************************** BackSpace ***************************** */
@@ -18,7 +18,7 @@ function clearDisplay() {
 function backSpace() {
   display_result = display_result.substring(0, display_result.length - 1);
   if (display_result == "") display_result = 0;
-  document.getElementById("display").innerHTML = display_result;
+  document.getElementById("result").value = display_result;
 }
 
 //********************** KeyDown Event & Display ************************* */
@@ -46,7 +46,7 @@ function display(e) {
     } else {
       alert("Only Numbers are allowed.");
       exit(); // terminates the function
-      document.getElementById("display").innerHTML = display_result;
+      document.getElementById("result").value = display_result;
     }
   } else {
     if (e.target.id == "add") {
@@ -63,7 +63,7 @@ function display(e) {
       display_result += e.target.id;
     }
   }
-  document.getElementById("display").innerHTML = display_result;
+  document.getElementById("result").value = display_result;
 }
 
 function lastDisplayedElement() {
@@ -131,7 +131,7 @@ function calculate() {
   clearDisplay();
   display_result = exp[0];
 
-  document.getElementById("display").innerHTML = display_result;
+  document.getElementById("result").value = display_result;
 }
 
 // New Learning - alternative to deprecated methods

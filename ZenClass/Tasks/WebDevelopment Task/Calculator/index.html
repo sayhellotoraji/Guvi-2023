@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- External CSS -->
     <link rel="stylesheet" href="styles.css" />
@@ -12,15 +12,19 @@
     <h1 id="title">Calculator Task</h1>
     <p id="description">
       <b>
-        The Calculator can perform basic addition, subtraction, multiplication,
-        division, modulous operations.<br />
-        Only Numbers are allowed, else an alert message will be displayed.<br/>
-        Ctrl+Shift+O - to open Test Suite or click the Menu on top left.
+        Performs Arithmatic Operations:<br />
+        Input can be given 2 ways:
+        <em><u>1. Button Click, 2. Keypress</u></em>
+        - Only Numbers are allowed, else an alert message will be displayed.<br />
+        <span style="background-color: yellow"
+          >Test Suite Menu on top left.</span
+        >
       </b>
     </p>
     <table>
-      <tr>
-        <input id ="result" hidden><td id="display" colspan="4">0</td>
+      <tr id="display">
+        <!-- <input id ="result" hidden><td id="display" colspan="4">0</td> -->
+        <td colspan="4"><input id="result" placeholder="0" /></td>
       </tr>
 
       <tr>
@@ -66,7 +70,6 @@
         <td>
           <button id="subtract" onclick="display(event)">-</button>
           <!-- <button id="-" onclick="display(event)">-</button> -->
-
         </td>
       </tr>
 
@@ -83,7 +86,6 @@
         <td>
           <button id="add" onclick="display(event)">+</button>
           <!-- <button id="+" onclick="display(event)">+</button> -->
-
         </td>
       </tr>
 
