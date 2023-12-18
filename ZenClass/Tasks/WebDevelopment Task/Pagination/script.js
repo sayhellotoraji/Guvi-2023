@@ -86,3 +86,4 @@ function display(curr_page) {
   document.getElementById("name").innerHTML = data[id].name;
   document.getElementById("email").innerHTML = data[id].email;
 }
+
