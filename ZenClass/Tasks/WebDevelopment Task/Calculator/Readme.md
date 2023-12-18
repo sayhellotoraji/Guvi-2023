@@ -1,3 +1,3 @@
-Hosted Link
+<h1>Hosted Link</h1>
 
-https://rajasekar-t-calculator.netlify.app/ 
+<h3>https://rajasekar-t-calculator.netlify.app/</h3> 
