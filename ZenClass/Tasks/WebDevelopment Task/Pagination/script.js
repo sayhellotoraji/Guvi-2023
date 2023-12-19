@@ -18,7 +18,7 @@ function firstPage() {
 }
 
 function lastPage() {
-  current_page = 10;
+  current_page = 100;
   display(current_page);
 }
 
