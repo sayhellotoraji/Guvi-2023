@@ -29,13 +29,12 @@ public class EmployeeController {
     }
 
 
+    @CrossOrigin(origins="localhost:8080")
     @DeleteMapping("deleteEmployee/{empId}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<Map<Integer, Employee>> deleteEmployee(@PathVariable("empId") int empId){
         EmployeeService.employeeList.remove(empId);
         return ResponseEntity.ok().body(EmployeeService.employeeList);
     }
-
-
 
 }
