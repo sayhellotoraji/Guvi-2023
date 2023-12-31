@@ -37,6 +37,11 @@ public class EmployeeService {
 	public Optional<Employee> getEmployeeById(Integer id) {
 		return employeeRepo.findById(id);
 	}
+	
+// 	Not working
+//	public Optional<Employee> getEmployeeByName(String name) {
+//		return employeeRepo.findEmployeeByName(name);
+//	}
 
 	public List<Employee> findAllEmployees() {
 		return employeeRepo.findAll();

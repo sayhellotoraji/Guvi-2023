@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 // Useful in request on demand scenario
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
+@Table
 public class Employee implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

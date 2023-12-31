@@ -41,12 +41,22 @@ public class EmployeeController {
 	}
 
 	@GetMapping("getEmployee/{empId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
-	public ResponseEntity<Optional<Employee>> getEmployee(@PathVariable("empId") int empId) {
+	@ResponseStatus(HttpStatus.NO_CONTENT) 
+	public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable("empId") int empId) {
 		Optional<Employee> emp = employeeService.getEmployeeById(empId);
+		System.out.println("Id");
 		return ResponseEntity.ok().body(emp);
 	}
-
+	
+	// ****************** Not Working
+	// @GetMapping("getEmployeeByName/{name}")
+	// @ResponseStatus(HttpStatus.NO_CONTENT) 
+	// public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
+	//	Optional<Employee> emp = employeeService.getEmployeeByName(name);
+	//	return ResponseEntity.ok().body(emp);
+	// }
+	//******************************************************
+	
 	@CrossOrigin("*")
 	@PutMapping("updateEmployee")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
@@ -62,7 +72,7 @@ public class EmployeeController {
 		employeeService.deleteEmployee(empId);
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
-
+	
 	@GetMapping("search")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
 	public ResponseEntity<Employee> getEmployeeQuery(@RequestParam("empId") int empId) {
