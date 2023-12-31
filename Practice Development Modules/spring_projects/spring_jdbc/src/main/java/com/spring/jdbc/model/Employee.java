@@ -5,17 +5,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("Employee")
-//@Scope("prototype")
 public class Employee {
+	
 	private int id;
 	private String name;
 	
-//	public Employee(int id, String name) {
-//		super();
-//		this.id = id;
-//		this.name = name;
-//	}
 	public int getId() {
 		return id;
 	}

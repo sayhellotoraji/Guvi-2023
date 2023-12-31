@@ -18,11 +18,11 @@ import com.spring.jdbc.service.EmployeeService;
 @Repository
 public class EmployeeRepo {
 
-	private static final String addEmployee = "insert into Employee values (:id, :name)";
-	private static final String employeeById = "select id, name from Employee where id =:id";
-	private static final String deleteEmployeeById = "delete from Employee where id =:id";
-	private static final String updateEmployeeById = "update Employee set name =:name where id =:id";
-	private static final String getEmployees = "select * from Employee";
+	private static final String addEmployee = "insert into employee values (:id, :name)";
+	private static final String employeeById = "select id, name from employee where id =:id";
+	private static final String deleteEmployeeById = "delete from employee where id =:id";
+	private static final String updateEmployeeById = "update employee set name =:name where id =:id";
+	private static final String getEmployees = "select * from employee";
 
 	@Autowired
 	private NamedParameterJdbcTemplate template;

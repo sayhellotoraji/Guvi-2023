@@ -41,6 +41,13 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
+	@GetMapping("getEmployee/{empId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT) 
+	public ResponseEntity<Employee> getEmployee(@PathVariable("empId") int empId) {
+		Employee emp = employeeService.getEmployeeById(empId);
+		return ResponseEntity.ok().body(emp);
+	}
+
 	@CrossOrigin("*")
 	@PutMapping("updateEmployee")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
@@ -55,14 +62,6 @@ public class EmployeeController {
 	public ResponseEntity<List<Employee>> deleteEmployee(@PathVariable("empId") int empId) {
 		employeeService.deleteEmployee(empId);
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
-	}
-
-	// Not working
-	@GetMapping("getEmployee/{empId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
-	public ResponseEntity<Employee> getEmployee(@PathVariable("empId") int empId) {
-		Employee emp = employeeService.getEmployeeById(empId);
-		return ResponseEntity.ok().body(emp);
 	}
 
 	@GetMapping("search")

@@ -18,41 +18,33 @@ public class EmployeeService {
 	@Autowired
 	EmployeeRepo employeeRepo;
 
-	private List<Employee> employeeList = new ArrayList<>();
+	// Not needed - but useful for caching (no database fetching) - Better
+	// private List<Employee> employeeList = new ArrayList<>();
 
 	public List<Employee> addEmployee(Employee emp) {
-		employeeList.clear();
-		int status = employeeRepo.addEmployee(emp);
-		if (status == 1)
-			employeeList.addAll(employeeRepo.findAll());
-		return employeeList;
+
+		// if (status == 1) - For debugging
+		employeeRepo.addEmployee(emp);
+		return employeeRepo.findAll();
 	}
 
 	public List<Employee> updateEmployee(Integer id, String name) {
-		employeeList.clear();
-		int status = employeeRepo.updateEmployee(id, name);
-		if (status == 1)
-			employeeList.addAll(employeeRepo.findAll());
-		return employeeList;
+
+		employeeRepo.updateEmployee(id, name);
+		return employeeRepo.findAll();
+
 	}
 
 	public List<Employee> deleteEmployee(Integer id) {
-		employeeList.clear();
-		int status = employeeRepo.deleteEmployee(id);
-		if (status == 1)
-			employeeList.addAll(employeeRepo.findAll());
-		return employeeList;
+		employeeRepo.deleteEmployee(id);
+		return employeeRepo.findAll();
 	}
 
 	public Employee getEmployeeById(Integer id) {
-		employeeList.clear();
-		Employee emp = employeeRepo.getEmployeeById(id);
-		return emp;
+		return employeeRepo.getEmployeeById(id);
 	}
 
 	public List<Employee> findAllEmployees() {
-		employeeList.clear();
-		employeeList.addAll(employeeRepo.findAll());
-		return employeeList;
+		return employeeRepo.findAll();
 	}
 }
