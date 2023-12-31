@@ -1,5 +1,6 @@
 package com.spring.jpa.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,19 +15,30 @@ public class EmployeeService {
 
 	@Autowired
 	EmployeeRepository employeeRepo;
-	
-	public Employee addEmployee(Employee emp) {
-		return employeeRepo.save(emp);
-	}
-	
-	public List<Employee> getEmployees() {
+
+	private List<Employee> employeeList = new ArrayList<>();
+
+	public List<Employee> addEmployee(Employee emp) {
+		employeeRepo.save(emp);
 		return employeeRepo.findAll();
 	}
-	
-	//Not working 
-//	public Employee getEmployee(Integer id) {
-//		return employeeRepo.getById(id);
-//	}
-	
-	
+
+	public List<Employee> updateEmployee(Employee emp) {
+		employeeRepo.saveAndFlush(emp);
+		return employeeRepo.findAll();
+
+	}
+
+	public List<Employee> deleteEmployee(Integer id) {
+		employeeRepo.deleteById(id);
+		return employeeRepo.findAll();
+	}
+
+	public Optional<Employee> getEmployeeById(Integer id) {
+		return employeeRepo.findById(id);
+	}
+
+	public List<Employee> findAllEmployees() {
+		return employeeRepo.findAll();
+	}
 }

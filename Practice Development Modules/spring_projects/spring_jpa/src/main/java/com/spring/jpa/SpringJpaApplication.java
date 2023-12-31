@@ -16,9 +16,7 @@ public class SpringJpaApplication {
 	public static void main(String[] args) {
 		
 		SpringApplication.run(SpringJpaApplication.class, args);
-//		ConfigurableApplicationContext context = 
-//		EmployeeRepository empRepo = context.getBean(EmployeeRepository.class);
-//		System.out.println(empRepo.getById(24));
+
 	}
 
 }

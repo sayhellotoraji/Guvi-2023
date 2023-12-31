@@ -1,15 +1,19 @@
 package com.spring.jpa.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,26 +21,52 @@ import com.spring.jpa.model.Employee;
 import com.spring.jpa.service.EmployeeService;
 
 @RestController
+@CrossOrigin("*")
 public class EmployeeController {
 
 	@Autowired
 	EmployeeService employeeService;
-	
+
 	@CrossOrigin("*")
 	@PostMapping("addEmployee")
 	@ResponseStatus(HttpStatus.ACCEPTED) // Just for Checking in Network responses
-	public void addEmployee(@RequestBody Employee emp) {
+	public ResponseEntity<List<Employee>> addEmployee(@RequestBody Employee emp) {
 		employeeService.addEmployee(emp);
-	}
-	
-	@GetMapping("getEmployees")
-	public ResponseEntity<List<Employee>> getEmployees(){
-		return ResponseEntity.ok().body(employeeService.getEmployees());
+		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
-	//Not working
-//	@GetMapping("getEmployee/{id}")
-//	public ResponseEntity<Employee> getEmployee(@PathVariable Integer id){
-//		return ResponseEntity.ok().body(employeeService.getEmployee(id));
-//	}
+	@GetMapping("getEmployees")
+	public ResponseEntity<List<Employee>> getEmployees() {
+		return ResponseEntity.ok().body(employeeService.findAllEmployees());
+	}
+
+	@GetMapping("getEmployee/{empId}")
+	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
+	public ResponseEntity<Optional<Employee>> getEmployee(@PathVariable("empId") int empId) {
+		Optional<Employee> emp = employeeService.getEmployeeById(empId);
+		return ResponseEntity.ok().body(emp);
+	}
+
+	@CrossOrigin("*")
+	@PutMapping("updateEmployee")
+	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
+	public ResponseEntity<List<Employee>> updateEmployee(@RequestBody Employee emp) {
+		employeeService.updateEmployee(emp);
+		return ResponseEntity.ok().body(employeeService.findAllEmployees());
+	}
+
+	@CrossOrigin("*")
+	@DeleteMapping("deleteEmployee/{empId}")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public ResponseEntity<List<Employee>> deleteEmployee(@PathVariable("empId") int empId) {
+		employeeService.deleteEmployee(empId);
+		return ResponseEntity.ok().body(employeeService.findAllEmployees());
+	}
+
+	@GetMapping("search")
+	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
+	public ResponseEntity<Employee> getEmployeeQuery(@RequestParam("empId") int empId) {
+		return ResponseEntity.ok().body(employeeService.findAllEmployees().get(empId));
+	}
+
 }
