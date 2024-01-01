@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,7 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.jpa.model.Employee;
 import com.spring.jpa.service.EmployeeService;
 
+//import io.swagger.annotations.Api;
+
 @RestController
+//@Api(tags="Employee Controller")
+//@RequestMapping("/api")
 public class EmployeeController {
 
 	@Autowired
