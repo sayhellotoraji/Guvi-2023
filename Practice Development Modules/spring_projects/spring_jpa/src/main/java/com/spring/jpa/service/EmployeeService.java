@@ -38,10 +38,9 @@ public class EmployeeService {
 		return employeeRepo.findById(id);
 	}
 	
-// 	Not working
-//	public Optional<Employee> getEmployeeByName(String name) {
-//		return employeeRepo.findEmployeeByName(name);
-//	}
+	public Optional<Employee> getEmployeeByName(String name) {
+		return employeeRepo.getEmployeeByName(name);
+	}
 
 	public List<Employee> findAllEmployees() {
 		return employeeRepo.findAll();

@@ -13,7 +13,7 @@ import com.spring.jpa.model.Employee;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	// Custom query needs to be specifed here.
-	//Not working
-	//@Query("from employee where name =:name")
-	//public Optional<Employee> findEmployeeByName(@Param("name") String name);
+
+	@Query("from Employee where name =:name")
+	public Optional<Employee> getEmployeeByName(@Param("name") String name);
 }

@@ -21,7 +21,6 @@ import com.spring.jpa.model.Employee;
 import com.spring.jpa.service.EmployeeService;
 
 @RestController
-@CrossOrigin("*")
 public class EmployeeController {
 
 	@Autowired
@@ -48,14 +47,12 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(emp);
 	}
 	
-	// ****************** Not Working
-	// @GetMapping("getEmployeeByName/{name}")
-	// @ResponseStatus(HttpStatus.NO_CONTENT) 
-	// public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
-	//	Optional<Employee> emp = employeeService.getEmployeeByName(name);
-	//	return ResponseEntity.ok().body(emp);
-	// }
-	//******************************************************
+	 @GetMapping("getEmployeeByName/{name}")
+	 @ResponseStatus(HttpStatus.NO_CONTENT) 
+	 public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
+		 Optional<Employee> emp = employeeService.getEmployeeByName(name);
+		return ResponseEntity.ok().body(emp);
+	 }
 	
 	@CrossOrigin("*")
 	@PutMapping("updateEmployee")
