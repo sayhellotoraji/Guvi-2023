@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.jpa.model.Employee;
 import com.spring.jpa.service.EmployeeService;
 
-//import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name="Employee Controller", description="Employee Controller API for Spring JPA")
 @RestController
-//@Api(tags="Employee Controller")
 //@RequestMapping("/api")
 public class EmployeeController {
 
