@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.jpa.exceptions.CustomException;
 import com.spring.jpa.model.Employee;
 import com.spring.jpa.service.EmployeeService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name="Employee Controller", description="Employee Controller API for Spring JPA")
+@Tag(name = "Employee Controller", description = "Emp Controller API for Spring JPA")
 @RestController
 //@RequestMapping("/api")
 public class EmployeeController {
@@ -33,7 +34,7 @@ public class EmployeeController {
 
 	@CrossOrigin("*")
 	@PostMapping("addEmployee")
-	@ResponseStatus(HttpStatus.ACCEPTED) // Just for Checking in Network responses
+	@ResponseStatus(HttpStatus.ACCEPTED) // Network Status Code
 	public ResponseEntity<List<Employee>> addEmployee(@RequestBody Employee emp) {
 		employeeService.addEmployee(emp);
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
@@ -44,21 +45,30 @@ public class EmployeeController {
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
 
+	/*
+	 * Exception Handling in SpringBoot example:
+	 * 
+	 * getEmployeeById(int empId) method
+	 * 
+	 */
+
 	@GetMapping("getEmployee/{empId}")
-	@ResponseStatus(HttpStatus.NO_CONTENT) 
-	public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable("empId") int empId) {
-		Optional<Employee> emp = employeeService.getEmployeeById(empId);
-		System.out.println("Id");
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+//	public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable("empId") int empId) {
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable("empId") int empId) throws CustomException {
+		Employee emp = employeeService.getEmployeeById(empId)
+				.orElseThrow(() -> new CustomException("Exception handling in Springboot"));
+
 		return ResponseEntity.ok().body(emp);
 	}
-	
-	 @GetMapping("getEmployeeByName/{name}")
-	 @ResponseStatus(HttpStatus.NO_CONTENT) 
-	 public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
-		 Optional<Employee> emp = employeeService.getEmployeeByName(name);
+
+	@GetMapping("getEmployeeByName/{name}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
+		Optional<Employee> emp = employeeService.getEmployeeByName(name);
 		return ResponseEntity.ok().body(emp);
-	 }
-	
+	}
+
 	@CrossOrigin("*")
 	@PutMapping("updateEmployee")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
@@ -74,7 +84,7 @@ public class EmployeeController {
 		employeeService.deleteEmployee(empId);
 		return ResponseEntity.ok().body(employeeService.findAllEmployees());
 	}
-	
+
 	@GetMapping("search")
 	@ResponseStatus(HttpStatus.NO_CONTENT) // Just for Checking in Network responses
 	public ResponseEntity<Employee> getEmployeeQuery(@RequestParam("empId") int empId) {
