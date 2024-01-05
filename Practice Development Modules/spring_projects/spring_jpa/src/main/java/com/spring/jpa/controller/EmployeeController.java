@@ -61,7 +61,8 @@ public class EmployeeController {
 
 		return ResponseEntity.ok().body(emp);
 	}
-
+	
+//	@GetMapping("getEmployee/{name}") - Results in Ambiguous handler exception.
 	@GetMapping("getEmployeeByName/{name}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Optional<Employee>> getEmployeeByName(@PathVariable("name") String name) {
