@@ -15,7 +15,7 @@ public class JUnitTestApplication {
 
 }
 
-// Components: JUnit-Mockito
+// Components: JUnit
 
 /* 
  * 1. JUnit -	module		: Calculator
@@ -23,11 +23,10 @@ public class JUnitTestApplication {
  * 
  * 		@Test annotation from jupiter package
  * 
- * 2. Mockito
  * 
  * 
  * 
- * 3. Test Suite
+ * 2. Test Suite - Pending
  * 
  */
 
