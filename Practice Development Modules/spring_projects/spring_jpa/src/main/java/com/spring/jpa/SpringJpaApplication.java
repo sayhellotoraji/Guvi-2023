@@ -3,7 +3,6 @@ package com.spring.jpa;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
 @SpringBootApplication
 public class SpringJpaApplication {
 
@@ -11,8 +10,11 @@ public class SpringJpaApplication {
 		SpringApplication.run(SpringJpaApplication.class, args);
 
 	}
-
 }
+// Lombok working in eclipse - https://projectlombok.org/setup/eclipse
+// Add dependency in pom.xml
+// Add plugin in STS
+// Dont restart, Close the project and reopen
 
 //*********************************************************************************/
 // 				Response Entity Type
@@ -26,7 +28,6 @@ public class SpringJpaApplication {
 // 		ResponseEntity consists of 3 optional parameters
 // 		Body, Headers, Status Codes
 //
-
 
 //***********************************************************************************/
 // 				Exception Handling
