@@ -15,7 +15,7 @@ import com.java.junit.module.Calculator;
 
 public class CalculatorTest {
 
-	// 2. Static or non static methods for different annotations
+	// Static or non static methods for different annotations
 	// Add @BeforeAll annotation to Static method
 
 	// All the @Test annotation can be added for non-static test methods

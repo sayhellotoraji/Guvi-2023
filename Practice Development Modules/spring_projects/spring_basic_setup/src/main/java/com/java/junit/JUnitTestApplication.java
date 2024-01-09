@@ -15,14 +15,20 @@ public class JUnitTestApplication {
 
 }
 
-// Components: JUnit-
-/*
- * Lombok dependency - Annotation for boiler platecode
+// Components: JUnit-Mockito
+
+/* 
+ * 1. JUnit -	module		: Calculator
+ * 			 	testcases	: CalculatorTest
  * 
- * Lombok working in eclipse - https://projectlombok.org/setup/eclipse
- * ----> Add dependency in pom.xml
- * ----> Add plugin in STS
- * ----> Dont restart, Close the project and reopen
+ * 		@Test annotation from jupiter package
+ * 
+ * 2. Mockito
+ * 
+ * 
+ * 
+ * 3. Test Suite
+ * 
  */
 
 
