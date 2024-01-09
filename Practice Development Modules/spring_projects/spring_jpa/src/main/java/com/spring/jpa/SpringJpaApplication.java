@@ -14,12 +14,9 @@ public class SpringJpaApplication {
 
 
 
-// Components - JDBC, JPA, Hibernate, Swagger
+// Components: Web-JDBC-JPA-Hibernate-MySQL-Exception Handling-Swagger
 
-// Lombok working in eclipse - https://projectlombok.org/setup/eclipse
-// Add dependency in pom.xml
-// Add plugin in STS
-// Dont restart, Close the project and reopen
+
 
 //*********************************************************************************/
 // 				Response Entity Type

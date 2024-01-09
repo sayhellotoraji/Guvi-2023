@@ -14,3 +14,15 @@ public class JUnitTestApplication {
 	}
 
 }
+
+// Components: JUnit-
+/*
+ * Lombok dependency - Annotation for boiler platecode
+ * 
+ * Lombok working in eclipse - https://projectlombok.org/setup/eclipse
+ * ----> Add dependency in pom.xml
+ * ----> Add plugin in STS
+ * ----> Dont restart, Close the project and reopen
+ */
+
+

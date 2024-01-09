@@ -11,3 +11,15 @@ public class SpringDataRestApplication {
 	}
 
 }
+
+
+/*
+ * Data_Rest project
+ * 
+ * 1. Data-Rest: Spring provides default rest controllers for resources
+ * 2. JPA 
+ * 3. MySQL
+ * 
+ * 
+ * 
+ * */
