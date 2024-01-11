@@ -21,4 +21,10 @@ public class SpringJdbcApplication {
 
 /*
  * Components: Web-JDBC-MySQL
+ * 
+ * NamedParameterJdbcTemplate - DB Config
+ * 
+ * 
  */
+
+
