@@ -14,24 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.spring.jpa.repository.EmployeeRepository;
 
-	/*
-	 * 
-		Important things to be followed
-	 
-	  	1. @ExtendWith, @Mock, @InjectMocks
-	  	
-	  	2. Test methods need to be public, void
-	  	
-	  	3. Another way to mock with out using @Mock and @InjectMocks
-	 
-	 	@BeforeEach
-		public void setUp() {
-	  	empRepo = Mockito.mock(EmployeeRepository.class);
-	  	empService = new EmployeeService(empRepo);
-		}	
-	 
-	 *
-	 */
+
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeeServiceTest {
@@ -73,7 +56,7 @@ public class EmployeeServiceTest {
 		 * The below verify method works if empService does not use empRepo 
 		 * and instead use someother repo
 		 * 
-		 * Uncomment & comment Block - 1 to run
+		 * Uncomment below code & comment Block - 1 to run
 		 */
 	
 		
