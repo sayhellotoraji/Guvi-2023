@@ -17,11 +17,13 @@ db.products.find({})
 
 // Returns the Documents based on the condition
 
-db.products.find({"product_price":{$gt:400, $lt:800}})
+db.products.find({"product_price":{$gte:400, $lte:800}})
 
 // Returns the number of filtered documents
 
-db.products.find({"product_price":{$gt:400, $lt:800}}).count() 
+db.products.find({"product_price":{$gte:400, $lte:800}}).count() 
+
+Result - 5
 
 
 
@@ -30,11 +32,11 @@ db.products.find({"product_price":{$gt:400, $lt:800}}).count()
 
 // Returns the Documents based on the condition
 
-db.products.find({"product_price":{$not:{$gt:400, $lt:600}}})
+db.products.find({"product_price":{$not:{$gte:400, $lte:600}}})
 
 // Returns the number of filtered documents
 
-db.products.find({"product_price":{$not:{$gt:400, $lt:600}}}).count()
+db.products.find({"product_price":{$not:{$gte:400, $lte:600}}}).count()
 
 Result - 22
 
@@ -48,6 +50,12 @@ db.products.find({product_price:{$gte:500}}).limit(4)
 
     5. Find the product name and product material of each products
 
+2 Ways of querying 
+
+db.products.find({}, {product_name: 1, product_material: 1, _id: 0})
+
+or
+
 db.products.find({}).projection({product_name: 1, product_material: 1, _id: 0})
 
 
@@ -59,6 +67,12 @@ db.products.find({id: "10"})
 
 
     7. Find only the product name and product material
+    
+// Since condition is not mentioned - 
+// We consider either all the documents - {} query is used inside find()
+
+ 
+// Below Query is used to find one item 
 
 db.products.find({id: "10"}).projection({_id: 0, product_name: 1, product_material: 1})
 
@@ -74,7 +88,7 @@ db.products.find({product_material: "Soft"})
 
 db.products.find({product_material: "Soft"}).count()
 
-Result - 4
+Result - 4 Documents returned
 
 
 
@@ -84,9 +98,10 @@ Result - 4
 
 db.products.find({$and:[{product_color: "indigo"}, {product_price: 492.00}]})
 
-// But while using Or Operator, the query returns an object
+// But while using Or Operator, 5 Documents returned
 
 db.products.find({$or:[{product_color: "indigo"}, {product_price: 492.00}]}).count()
+
 
 
 
