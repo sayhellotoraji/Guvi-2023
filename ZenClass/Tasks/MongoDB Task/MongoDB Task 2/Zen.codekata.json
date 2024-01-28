@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "65b5edb104a606d407d47b24"
+  },
+  "problem_no": 1,
+  "description": "Basic input and output java statements",
+  "solved_by": [
+    1,
+    2
+  ]
+},
+{
+  "_id": {
+    "$oid": "65b5efc904a606d407d47b2a"
+  },
+  "problem_no": 2,
+  "description": "Arrays",
+  "solved_by": [
+    1,
+    2
+  ]
+},
+{
+  "_id": {
+    "$oid": "65b5efdc04a606d407d47b2b"
+  },
+  "problem_no": 24,
+  "description": "LinkedList",
+  "solved_by": [
+    1,
+    2
+  ]
+}]

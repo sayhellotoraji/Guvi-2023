@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "65b51f3ecb843a3df9523cde"
+  },
+  "topic_no": 1,
+  "topic": "Java OOPS",
+  "date": "2023-10-10"
+},
+{
+  "_id": {
+    "$oid": "65b52204cb843a3df9523cf9"
+  },
+  "topic_no": 1,
+  "topic": "Java OOPS",
+  "date": "2023-11-1"
+}]

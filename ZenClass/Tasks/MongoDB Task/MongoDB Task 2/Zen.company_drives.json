@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "65b5283dcb843a3df9523d10"
+  },
+  "company_id": 1,
+  "company_name": "Amazon",
+  "drive_date": "2024-02-23",
+  "applicants": [
+    1,
+    2,
+    3
+  ]
+},
+{
+  "_id": {
+    "$oid": "65b52856cb843a3df9523d11"
+  },
+  "company_id": 1,
+  "company_name": "Google",
+  "drive_date": "2020-10-16",
+  "applicants": [
+    4,
+    5,
+    6
+  ]
+}]

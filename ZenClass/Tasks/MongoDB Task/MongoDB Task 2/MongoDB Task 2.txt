@@ -1,0 +1,110 @@
+﻿MongoDB Task
+
+Design database for Zen class programme
+users
+codekata
+attendance
+topics
+tasks
+company_drives
+mentors
+
+
+All the JSON files are stored in Github
+
+
+    1. Find all the topics and tasks which are thought in the month of October
+
+db.topics.aggregate([{$match:{date:{ $gte:"2023-10-1", $lt:"2023-11-1"}}},{$lookup:{from:"tasks", localField:"task_no", foreignField: "topic_no", as: "tasks"}}])
+
+
+
+    2. Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+
+db.company_drives.find({"drive_date":{$gte:"2020-10-15", $lte:"2020-10-31"}})
+
+
+
+
+    3. Find all the company drives and students who are appeared for the placement.
+
+db.company_drives.aggregate([{$lookup:{from: "users", localField: "user_id", foreignField: "applicants", as: "applicantions"}},{$project:{_id:0, company_name:1, applicants:"$applicantions.user_name" }}])
+
+
+
+
+    4. Find the number of problems solved by the user in codekata
+
+
+db.codekata.find({solved_by:{$in:[1]}},{_id:0,solved_by:0}).count()
+
+// Input - User id = 1
+// Output - 3
+
+// Display the problem number and description of each problem solved by the user based on user id.
+db.codekata.find({solved_by:{$in:[1]}},{_id:0,solved_by:0})
+
+
+
+
+    5. Find all the mentors with who has the mentee's count more than 15
+
+
+db.mentors.find({"mentee' s": {$gte:15}},{_id:0, mentor_id:1, mentor_name:1})
+
+
+
+
+    6. Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+
+Query:
+
+db.submission_filter.find({"submitted_by":{$in:db.calendar_filter.distinct("absent")}}).count() + db.submission_filter.find({"not_submitted_by":{$in:db.calendar_filter.distinct("absent")}}).count()
+
+// Output: Count - 2 
+
+Explanation:
+
+// Returns the submitted users count after 31st Oct 2023
+db.submission_filter.find({"submitted_by":{$in:db.calendar_filter.distinct("absent")}}).count()  - Returns count: 1 
+
+// Returns the not submitted users count after 31st Oct 2023
+db.submission_filter.find({"not_submitted_by":{$in:db.calendar_filter.distinct("absent")}}).count() - Returns count: 1
+
+
+
+
+
+							THE END
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+	// Explanation for future personal reference
+
+// 1. Daily calendar - Absentees 
+db.attendance.find({attendance_date:{$gte:"2023-10-01", $lte:"2023-10-31"}}, {_id:0, present:0})
+
+or 
+// Use to store the result as a new collection in db
+db.attendance.aggregate({$match:{attendance_date:{$gte:"2023-10-15", $lte:"2023-10-31"}}}, {$project:{_id:0, present:0, attendance_date:0}},{ $out : { db: "Zen", coll: "calendar_filter" }} )
+
+// To find the distinct absentee' s user id
+db.calendar_filter.distinct("absent")
+
+// Absentees on each date between the given dates
+db.calendar_filter.find({})
+
+
+
+
+// 2. Task Submission Filter:
+
+db.tasks.aggregate({$match:{submission_date:{$gte:"2023-11-01"}}},{ $out : { db: "Zen", coll: "submission_filter" }} )
+
+db.submission_filter.find({},{_id:0,not_submitted_by:1})
+db.submission_filter.find({},{_id:0,not_submitted_by:1}).count()
+
+
+
