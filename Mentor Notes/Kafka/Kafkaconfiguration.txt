@@ -1,0 +1,24 @@
+kafka installation
+------------------
+Step 1:- download kafka_2.13-3.6.1.tgz
+https://kafka.apache.org/downloads 
+
+Step 2:- Extract tgz
+
+Step 3:- To start zookeeper server
+C:\kafka_2.13-3.6.1>.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+
+step 4:- To Start kafka server
+C:\kafka_2.13-3.6.1>.\bin\windows\kafka-server-start.bat .\config\server.properties
+
+step 5:- To create bootstrap-server
+C:\kafka_2.13-3.6.1>.\bin\windows\kafka-topics.bat --create --topic topic-example-1 --bootstrap-server localhost:9092
+
+step 6:- To Start Console Producer
+C:\kafka_2.13-3.6.1>.\bin\windows\kafka-console-producer.bat --topic topic-example --bootstrap-server localhost:9092
+
+step 7:- Get current consumer server
+C:\kafka_2.13-3.6.1>.\bin\windows\kafka-console-consumer.bat --topic topic-example --bootstrap-server localhost:9092
+
+Step 8:- Get Consumer from the beginning
+C:\kafka_2.13-3.6.1>.\bin\windows\kafka-console-consumer.bat --topic topic-example --from-beginning --bootstrap-server localhost:9092

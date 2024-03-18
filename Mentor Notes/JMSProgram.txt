@@ -1,0 +1,153 @@
+pom.xml
+-------
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.1.7</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>messaging-jms</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>demo</name>
+	<description>Demo project for Spring Boot</description>
+	<properties>
+		<java.version>17</java.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-artemis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<builder>paketobuildpacks/builder-jammy-base:latest</builder>
+					</image>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+public class Email {
+
+  private String to;
+  private String body;
+
+  public Email() {
+  }
+
+  public Email(String to, String body) {
+    this.to = to;
+    this.body = body;
+  }
+
+  public String getTo() {
+    return to;
+  }
+
+  public void setTo(String to) {
+    this.to = to;
+  }
+
+  public String getBody() {
+    return body;
+  }
+
+  public void setBody(String body) {
+    this.body = body;
+  }
+
+  @Override
+  public String toString() {
+    return String.format("Email{to=%s, body=%s}", getTo(), getBody());
+  }
+
+}
+
+import org.springframework.jms.annotation.JmsListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Receiver {
+
+  @JmsListener(destination = "mailbox", containerFactory = "myFactory")
+  public void receiveMessage(Email email) {
+    System.out.println("Received <" + email + ">");
+  }
+
+}
+
+
+import jakarta.jms.ConnectionFactory;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
+
+@SpringBootApplication
+@EnableJms
+public class Application {
+
+  @Bean
+  public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
+                          DefaultJmsListenerContainerFactoryConfigurer configurer) {
+    DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+    // This provides all auto-configured defaults to this factory, including the message converter
+    configurer.configure(factory, connectionFactory);
+    // You could still override some settings if necessary.
+    return factory;
+  }
+
+  @Bean // Serialize message content to json using TextMessage
+  public MessageConverter jacksonJmsMessageConverter() {
+    MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
+    converter.setTargetType(MessageType.TEXT);
+    converter.setTypeIdPropertyName("_type");
+    return converter;
+  }
+
+  public static void main(String[] args) {
+    // Launch the application
+    ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+
+    JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
+
+    // Send a message with a POJO - the template reuse the message converter
+    System.out.println("Sending an email message.");
+    jmsTemplate.convertAndSend("mailbox", new Email("info@example.com", "Hello"));
+  }
+
+}
+
+
+application Properties
+----------------------
+spring.artemis.mode=embedded
