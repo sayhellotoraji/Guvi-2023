@@ -1,0 +1,134 @@
+1.You are given String  represent a phone number in the format of (XXX) XXX-XXXX.your 
+task is to validate the given string is a valid phone number or not.
+
+Input:
+Enter a phone number
+(123) 456-7890
+Output
+True
+
+Code:
+package com.problemsolving;
+
+import java.util.Scanner;
+import java.util.regex.Pattern;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter a phone number");
+        String phonno=sc.nextLine();
+        boolean isvalid=isValidPhone(phonno);
+        System.out.println("Is phone number valid ?"+isvalid);
+        
+     }
+
+	private static boolean isValidPhone(String phonno) {
+		String regex="\\(\\d{3}\\) \\d{3}-\\d{4}";
+		return Pattern.matches(regex, phonno);
+	}
+    
+}
+
+
+
+
+Q.You are given a string contains a word.Your task is to check if the word start with letter
+'A' or 'a'
+
+input:
+apple
+
+output:
+true
+
+
+
+
+Q.you are given string represent a character. your task is to check if sentence ends with
+question mark?
+
+input
+How are you?
+
+output:
+true
+
+
+
+Reverse My name->
+Lavish
+
+Reverse string->
+hsivaL
+
+
+
+
+Emma is software developer working on financial application. She need to calculate the sum of 
+several transactions entered by the user. Help Emma to WAP that reads the list of integers 
+representing transaction amount and calculate their total sum using java stream.
+
+Testcase:1
+input:100 200 300 400 500
+Output:1500
+
+TestCase:2
+input:10 20 30
+Output:60
+
+code:
+package com.problemsolving;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter transactions:");
+        
+        List<Integer> trans=Arrays.stream(sc.nextLine().split("\\s+"))
+        					.map(Integer::parseInt)
+        					.collect(Collectors.toList());
+        
+        System.out.println(trans);
+        
+        //sum of transaction
+     int sum=trans.stream().mapToInt(Integer::intValue).sum();
+      System.out.println(sum);
+     }
+    
+}
+
+
+
+Lavish is building a text categorization tool that group words by their length.
+Help lavish to WAP that reads the list of string and group them by their length.
+(Use java- stream )
+
+Testcase:1
+input a bb ccc dd eee
+output:{1=[a],2=[bb,dd],3=[ccc,eee]}
+
+Testcase:2
+input apple banana cherry date
+output={5=[apple],6=[banana,cherry],4=[date]}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

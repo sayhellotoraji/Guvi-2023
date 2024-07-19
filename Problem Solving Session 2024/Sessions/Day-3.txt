@@ -1,0 +1,304 @@
+Fundamental of Arrays:
+Array& String:
+Maximum of array element:
+1.You are playing a PUBG game and you have entered into bootcamp.There you viewed the dropbox
+which was filled with gun and you have to choose the biggest gun in drop box.
+Find the biggest gun and you will get the chicken dinner.
+
+input:
+n-size of the array
+n-elements of the array
+Input:
+5->
+2 
+3
+6
+8
+1
+Output"
+8
+
+
+Output:
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		//size of the array
+		int size=sc.nextInt();//5 elements
+		//dynamic array to store 5 element
+		int[] array=new int[size];//space is created
+		//loop mechanism-to read the data
+		for(int i=0;i<size;i++) {
+			array[i]=sc.nextInt();
+		}
+		
+		//logic stuff
+		int max=0;
+		for(int i=0;i<size;i++) {
+			if(array[i]>max) {
+				max=array[i];//2
+			}
+		}
+		System.out.println(max);		
+	}
+
+}
+
+
+
+Sum of matrix of 2 elements:
+Q2.Ramu have some number of Apples and he arranges that in matrix format.Raju have some another  number
+of applies. He also wants to arrange them matrix format.Ragul wants to the total number of apples
+Help Ragul to find out the total number apples.
+Samples input:
+5-size of an array
+elements of first matrix-Ramu
+2
+3
+6
+8
+1
+elements of second matrix-Raju
+1
+1
+1
+1
+1
+
+Ragul-3 4 7 9 2
+Output:
+3 4 7 9 2
+
+
+
+
+
+Code:
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		//size of the array
+		int n=sc.nextInt();//5 elements
+		//dynamic array to store 5 element
+		int[] array1=new int[n];
+		int[] array2=new int[n];
+		int[] sum=new int[n];
+		
+		//loop mechanism-to read the data-Ramu
+		for(int i=0;i<n;i++) {
+			array1[i]=sc.nextInt();
+		}
+		
+		//loop mechanism-to read the data-Ramu
+		for(int i=0;i<n;i++) {
+			array2[i]=sc.nextInt();
+		}
+
+		//loop mechanism-to read the data-Ramu+Raju
+		for(int i=0;i<n;i++) {
+			sum[i]=array1[i]+array2[i];
+		}
+		
+		//to print -one more loop
+		for(int i=0;i<n;i++)
+		{
+			System.out.print(sum[i]+" ");
+			
+		}
+
+	}
+
+}
+
+
+Chitra's teacher who gave task to chitra to check if a particular student is available with 
+the given roll number in class .If student is available,Student present or else Absent 
+in case of not present.Help Chitra to develop a code to find student with roll number in class
+input:
+5-size of 
+2
+3
+6
+8
+1
+array element
+6-element that we want search
+
+
+Output:
+6 student is present the class
+
+
+
+
+Code solution:
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		//size of the array
+		int n=sc.nextInt();//5 elements
+		//dynamic array to store 5 element
+		int[] array=new int[n];
+		int flag=0;	//element not available
+		//loop mechanism-to read the data
+		for(int i=0;i<n;i++) {
+			array[i]=sc.nextInt();//2 3 6 8 1
+		}
+		//read one more variable-element to be search
+		int ele=sc.nextInt();//6
+		
+		//write logic
+		for(int i=0;i<n;i++) {
+			if(ele==array[i]) {
+				flag=1;//element exist
+				break;
+			}
+		}
+		
+		if(flag==1) {
+			System.out.println(ele+" student present in classroom");
+		}else {
+			System.out.println(ele+" student not present in classroom");
+
+		}
+		
+	}
+
+}
+
+
+Odd-Even
+
+Q.Lavish and Rajshekar are playing a puzzle game with game of given set of numbers.They need to find
+odd and even number and also find the sum of the odd and even numbers.Write a program to help lavish
+and Rajshekar to solve puzzle game and win Mobile of Prize 1000000
+Input:
+5-size
+
+2
+3
+6
+8
+-1
+output:
+16
+2
+
+Code :
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		//size of the array
+		int n=sc.nextInt();//5 elements
+		//dynamic array to store 5 element
+		int[] array=new int[n];
+		//declare variable
+		int odd_sum=0,even_sum=0;
+		
+		//iterate through array
+		for(int i=0;i<n;i++) {
+			array[i]=sc.nextInt();
+		}
+		
+		//logic 
+		for(int i=0;i<n;i++) {
+			//if-else
+			if(array[i]%2==0) {
+				//even
+				even_sum=even_sum+array[i];
+			}else {
+				//odd
+				odd_sum=odd_sum+array[i];
+			}
+		}
+		System.out.println(even_sum);
+		System.out.println(odd_sum);
+
+		
+	}
+
+}
+
+Input:
+Output:
+
+
+
+A group of children playing in garden. The old man who need help but he needs elder boy from children
+to help him.Could you write a program to help the old man so that he can find elder one from group
+of children.
+Testcase:1
+input:
+3
+2
+4 5
+6 9
+0 3
+
+Output:
+9
+
+Testcase:2
+input:
+2
+2
+56 62
+96 36
+
+output:
+96
+
+
+Loops->2 loops are required
+i-rows
+j-columns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

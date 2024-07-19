@@ -1,0 +1,263 @@
+Write a code for the given input
+input:
+Guvi Geek
+
+Output:
+Guvi Geek
+
+
+Output:
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        //read String input->
+        String result=sc.nextLine();
+
+        System.out.println(result);
+
+    }
+}
+
+
+Write a code to print the given data using char data type
+Input:a
+output:a
+
+input:z
+output:z
+
+
+Output:
+import java.util.Scanner;
+
+//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        //read String input->
+        char result=sc.next().charAt(0);
+
+        System.out.println(result);
+
+    }
+}
+
+
+
+
+WAP with data:
+TestCase:1
+input:
+56
+Output:
+56
+
+Testcase:2
+input:0
+output:0
+
+
+Output:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int num=sc.nextInt();
+        System.out.println(num);
+
+    }
+}
+
+WAp to print the float values=?
+Input:56.3456
+Output:56.34
+
+
+input:12.673
+output:12.67
+
+maximum precision->upto ->6 decimal places
+output->12.000000
+
+c-printf approach
+
+Simple interest-
+
+c-programming=>printf
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        float res=sc.nextFloat();
+        System.out.printf("%.3f",res);
+
+    }
+}
+
+
+WAP to print the unicode values.
+A->65,B->66,C->67,D->68,E->69
+Z->90
+a->97,b-98----z->122
+input:B
+output:66
+
+input:g
+output:103
+
+output:
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        char c=sc.next().charAt(0);
+
+        //conver char to integer->typecast
+        int num=(int)c;
+        System.out.println(num);
+
+
+    }
+}
+
+Reverse of the above program?
+input:66
+output:B
+
+input:103
+output:g
+
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+
+        //conver char to integer->typecast
+        char c =(char)a;
+        System.out.println(c);
+
+
+    }
+}
+
+Conversion of char to Unicode to value and vice-a-versa
+
+int=1+97
+
+
+
+
+WAp to swap  the values using temp variable
+Testcase-1:
+input:
+10
+20
+
+output:
+20
+10
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        //create a variable
+            int a,b,temp;
+             a= sc.nextInt();
+             b= sc.nextInt();
+            //logic
+            temp=a;//10
+            a=b;//20->collected inside a
+            b=temp;//10
+
+
+        System.out.println(a);
+        System.out.println(b);
+
+    }
+}
+
+
+WAp to swap  the values using without temp variable
+a and b
+a=10   b=20
+
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        //create a variable
+            int a,b;
+             a= sc.nextInt();
+             b= sc.nextInt();
+            a=a+b;//=>10+20=>30
+            b=a-b;//->30-20=>10
+            a=a-b;//=>30-10=>20
+        System.out.println(a);
+        System.out.println(b);
+
+    }
+}
+
+Lavish wished to build a new huse but didn't have sufficient
+amount.So, I am planning to borrow some money from bank people
+on simple interest.When borrowing the money, I have to pay back
+the original amount accompanied by certain amount of interest 
+on that amount.I want to find the interest for borrowed money with
+certain perido.Help lavish to find simple interest
+input->
+first line->principle amount
+second->period in years
+third-rate of interest
+
+output:
+simple interest with 2 deciml places.
+
+Testcase-1
+15000
+2
+2.8
+
+Formula->P*T*R->
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        //create a variable
+         int pa,t;
+         float r;
+          pa=sc.nextInt();
+          t=sc.nextInt();
+          r=sc.nextFloat();
+
+         //logic
+        System.out.printf("%.2f",pa*t*r/100);
+
+
+    }
+}
+
+
+
+
+
+
+
+

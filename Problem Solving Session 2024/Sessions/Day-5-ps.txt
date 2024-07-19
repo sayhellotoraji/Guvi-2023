@@ -1,0 +1,162 @@
+Given a Data ,WAP using Hashing.
+input:
+Enter the number of element:8
+Enter the maximum value of element:8
+Enter element:
+5 3 8 3 5 2 8 3
+
+
+Output:
+2 3 3 3 5 5 8 8
+
+code:
+package com.problemsolving;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        //create scanner class object
+        Scanner sc=new Scanner(System.in);
+        
+        //read the number of element
+        int n=8;
+        //determine range 0 to max
+        int maxval=8;
+        
+        //create an array to count frequency 
+        int[] elements={5,3,8,3,5,2,8,3};
+        
+        //create an array to count frequency 
+        int[] hasharray=new int[maxval+1];
+        
+        
+        //take n element
+       
+        for(int num:elements){
+          hasharray[num]++;
+        }
+    
+        
+        //sorted format
+        for(int num=0;num<=maxval;num++) {
+            for(int count=0;count<hasharray[num];count++) {
+                System.out.print(num+" ");
+            }
+        }
+    }
+    
+}
+
+
+Fibonacci using DP
+
+package com.problemsolving;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the index of fibonacci number");
+        int n=sc.nextInt();
+        //initialize an array to store fib. number
+        int[] dp=new int[n+1];
+        
+        //basecase
+        dp[0]=0;//fib(0)->0
+        dp[1]=1;//fib)(1)->1
+        
+       //fibonacci-dp function 2 to n
+        for(int i=2;i<=n;i++) {
+        	dp[i]=dp[i-1]+dp[i-2];//fib(n)->fib(n-1)+fib(n-2)
+        	
+        }
+        System.out.println(dp[n]);
+    }
+    
+}
+
+
+Q.Coin Change problem:
+Statment:
+Find the minimum number of  coins needed to
+make given amount.
+
+Amount-11
+coins-[1,5,6,8]
+use minimum number of coins to make smaller amount
+to build solution for larger amount
+Amount->6+5=>11
+
+
+Enter the amount->11
+Enter the number of coins-4
+Enter the coin denomination-
+1 5 6 8
+
+Output:
+Min. coins require:2
+
+
+
+package com.problemsolving;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        
+        
+        //amount
+        System.out.println("Enter the amount");
+        int amount=sc.nextInt();//11
+        //coins
+        System.out.println("Enter the number of coins");
+        int mcoins=sc.nextInt();//4
+        
+        //denomination
+        int[] coins=new int[mcoins];
+        
+        System.out.println("Enter the coin denomination");
+        for(int i=0;i<mcoins;i++) {
+        	coins[i]=sc.nextInt();//1 5 6 8
+        }
+        
+        //create an array to store coins -0 to any amount
+        int[] dp=new int[amount+1];
+        for(int i=1;i<=amount;i++) {
+        	dp[i]=Integer.MAX_VALUE;
+        }
+        
+        //base ->0 coins ->0 amount
+        dp[0]=0;
+        
+        
+//        1 to amount
+        for(int i=1;i<=amount;i++) {
+        	//iterate->coin denomination
+        	for(int coin:coins) {
+        		if(i>=coin) {
+        			dp[i]=Math.min(dp[i],dp[i-coin]+1);
+        		}
+        	}
+        }
+        
+        int minnumcoins=dp[amount];
+        System.out.println("Minimum coins required "+minnumcoins);
+    }
+    
+}
+
+
+
+
+

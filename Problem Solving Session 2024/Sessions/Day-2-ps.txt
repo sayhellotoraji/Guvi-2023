@@ -1,0 +1,432 @@
+Story requirement:
+During the physical Education hour,PT sir has decicded to conduct games.
+He wants to split the student in equal size of team.in some cases,
+there may student who left out from team and we want
+to use left out student to assit the PT teacher games
+
+
+Input:
+No of students:60
+Team:8 size
+
+Output:
+Students in each team 7 and left out 4
+
+
+input:
+40
+6
+
+output:
+Students in each team 6 and left out 4
+
+
+need to find quotient the reminder resp.
+
+/-quotient
+%->modulous operator
+
+
+Solution:
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		//take 2 input from->
+		int noofstudent,teamsize;
+		noofstudent=sc.nextInt();//60
+		teamsize=sc.nextInt();//8
+		System.out.println("The no of student in each team  "+noofstudent/teamsize+ "and left out is:"+ noofstudent%teamsize);
+
+	}
+
+}
+
+
+
+
+Q2.Profit Calculation
+Newspaper->
+Each sunday, a newspaper agency sells x copies of certain newspaer for Rs.a per copy.
+The cost to the agency of each newspaper is Rs.b.The agency pays a fixed cost for storage,
+delivery and so on Rs.100 per sunday. Newspaper agency wants to calculate the profit 
+obtained on sunday.Could you help them to compute the profit.?
+
+
+Input:
+x,a and b
+x->the number of copies sold
+a->cost per copy
+b->cost the agency spend per copy
+TestCase:1
+input:
+1000
+2
+1
+
+output:
+The profit obtained:900 rs
+
+
+TestCase:2:
+input:
+300
+2
+1
+output:
+200
+
+
+
+
+Q.Sara found magical map that leads to hidden gems in garden.
+The map has path number from 1 to 18 .To find the correct path,
+Sara need to solve clue given by the map.The map shows 
+two-digit number and tell her that sum of that digit 
+will reveal path the number to the gem.
+input:
+two-digit number
+output:
+sum digit indicate path number.
+
+input:
+23
+outpit:
+Sar'a path is:5
+
+Input:
+99
+Output
+Sara path is:18
+
+
+
+
+
+
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		
+		//read the rows and columns 
+		int rows=sc.nextInt();//5
+		int columns=sc.nextInt();//5
+		
+		//2 for loop->outer for-iteration and inner to print element in each row
+		for(int i=1;i<=rows;i++) {
+			//to print -use inner 
+			for(int j=1;j<=columns;j++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+
+Output:
+5
+5
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+* * * * * 
+
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		
+		//read the rows and columns 
+		int rows=sc.nextInt();//5
+		int columns=sc.nextInt();//5
+		
+		//2 for loop->outer for-iteration and inner to print element in each row
+		for(int i=1;i<=rows;i++) {
+			//to print -use inner 
+			for(int j=1;j<=columns;j++) {
+				System.out.print(i);
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+
+
+5
+5
+11111
+22222
+33333
+44444
+55555
+
+input
+5
+5
+output
+12345
+12345
+12345
+12345
+12345
+
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		
+		//read the rows and columns 
+		int rows=sc.nextInt();//5
+		int columns=sc.nextInt();//5
+		
+		//2 for loop->outer for-iteration and inner to print element in each row
+		for(int i=1;i<=rows;i++) {
+			//to print -use inner 
+			for(int j=1;j<=columns;j++) {
+				System.out.print(j);
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+Output:
+5
+5
+12345
+12345
+12345
+12345
+12345
+
+
+input:
+rows:5
+output:
+*
+**
+***
+****
+******
+
+How many rows are there?
+5
+What is number of element in each row in column?
+1st row->1->j=1 to 1
+2nd row->2->j=1 to 2
+3rd row-3->j=1 to 3
+4th row-4->j=1 to 4
+5th row->5->j=1 to 5
+
+i->inner loop->limit the numbers of rows with equivalent i
+
+
+
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		
+		//read the rows and columns 
+		int rows=sc.nextInt();//5
+		int columns=sc.nextInt();//5
+		//2 for loop->outer for-iteration and inner to print element in each row
+		for(int i=1;i<=rows;i++) {
+			//to print -use inner 
+			for(int j=1;j<=i;j++) {
+				System.out.print(i);
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+5
+5
+1
+22
+333
+4444
+55555
+
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		
+		//read the rows and columns 
+		int rows=sc.nextInt();//5
+		int columns=sc.nextInt();//5
+		//2 for loop->outer for-iteration and inner to print element in each row
+		for(int i=1;i<=rows;i++) {
+			//to print -use inner 
+			for(int j=1;j<=i;j++) {
+				System.out.print(j);
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+5
+5
+1
+12
+123
+1234
+12345
+
+
+
+WAP to print the below pattern:
+Inverted half pyramid
+input:5
+output:
+*****
+****
+***
+**
+*
+
+How many elements printed in each rows?
+1st row-*****
+2nd row-****
+3rd row-***
+4th row-**
+5th row-*
+
+rows number-5
+j=5
+j=row;i<=j;j--
+
+What is total size of all rows?
+
+half right triangle
+half right inverted traingle
+
+input:
+5
+output:
+*
+**
+***
+****
+******
+*****
+****
+***
+**
+*
+
+WAP:
+input:
+5
+output:
+         *
+       * *
+     * * * 
+   * * * *
+ * * * * *
+
+
+outer iteration-1st to 5th row
+2 loops in above loop->
+1.print the spaces
+2.print the *
+
+
+
+package com.problemsolving;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		//create scanner class object
+		Scanner sc=new Scanner(System.in);
+		
+		//read the rows and columns 
+		int rows=sc.nextInt();//5
+			
+		//outer loop iterate i loop from 1 to rows
+		for(int i=1;i<=rows;i++) {
+			//print the space->       
+			for(int j=rows;j>i;j--) {
+				System.out.print(" ");
+			}
+			
+			//print the stars->
+			
+			for(int k=1;k<=i;k++) {
+				System.out.print("* ");
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+
+5
+    * 
+   * * 
+  * * * 
+ * * * * 
+* * * * * 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
